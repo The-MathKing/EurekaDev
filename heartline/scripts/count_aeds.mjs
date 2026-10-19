@@ -23,11 +23,16 @@ async function count(city, state) {
 area["name"="${state}"]["admin_level"="4"]->.s;
 area["name"="${city}"]["boundary"="administrative"](area.s)->.c;
 nwr["emergency"="defibrillator"](area.c);out count;`;
-  const res = await fetch("https://overpass-api.de/api/interpreter", {
-    method: "POST",
-    body: new URLSearchParams({ data: q }),
-    headers: { "User-Agent": "heartline-evidence/1.0" },
-  });
+  let res;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    res = await fetch("https://overpass-api.de/api/interpreter", {
+      method: "POST",
+      body: new URLSearchParams({ data: q }),
+      headers: { "User-Agent": "heartline-evidence/1.0" },
+    });
+    if (res.status !== 429 && res.status !== 504) break;
+    await new Promise((r) => setTimeout(r, 15000 * (attempt + 1))); // rate-limited: back off
+  }
   if (!res.ok) throw new Error(`${city}: HTTP ${res.status}`);
   const json = await res.json();
   return Number(json.elements[0]?.tags?.total ?? 0);
