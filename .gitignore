@@ -7,3 +7,4 @@ paper/*.log
 paper/*.out
 __pycache__/
 .DS_Store
+data/walk_pairs_buggy.csv

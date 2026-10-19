@@ -6,7 +6,7 @@ from aed import Params, gains, load, milp, objective
 
 OUT = "/Volumes/2TB/eurekadev/results"
 o, s, pairs = load()
-G = gains(o, s, pairs, Params())
+G = gains(o, s, pairs, Params(), rt_sample=o.response_min[~o.rt_imputed].values)
 groups = o.set_index("idx").svi_q  # 1 = least vulnerable ... 4 = most vulnerable
 n_q = groups.value_counts().sort_index()
 density = pairs.groupby("j").size().to_dict()

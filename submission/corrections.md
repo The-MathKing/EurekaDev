@@ -1,0 +1,65 @@
+# Corrections after the review: numbers to update in paper.tex
+
+Every number below is out-of-sample: sites are chosen on four half-years and scored on the held-out fifth, using the 5-fold temporal cross-validation. Confidence intervals come from a bootstrap that resamples address clusters, so repeat addresses aren't counted as independent. The results file is given in brackets.
+
+## What changed and why
+
+1. **Walking-distance bug (critical).** Arrests and sites were snapped to the nearest walking path without adding the distance to that path. Some pairs that were kilometres apart came out as 0 m. Fixed in `walk_distances.py`: snap distances are added, the distance is never shorter than the straight line, and points more than 150 m from the network count as unreachable.
+2. **The cabinet and hours results were in-sample.** Sites were planned and scored on the same arrests. They are now out-of-sample.
+3. **The tie-breaker used test-fold data.** It now uses training data only.
+4. **Unequal budgets.** At 200 AEDs the classic method could only use about 106 sites. Every method now places exactly *p* AEDs.
+5. **Confidence intervals were too narrow.** They now come from the clustered bootstrap.
+6. **The main model is now "expected survival".** It averages over the citywide distribution of response times instead of using each arrest's own. This follows from RQ3, and it performs the same while needing less data. Say this openly in the paper: the per-arrest version was tested first.
+7. **The De Maio curve got the wrong input.** It now uses the response interval measured from the 911 call.
+
+## Sentences in your rewrite that are now wrong
+
+| Where | Your text says | Replace with |
+|---|---|---|
+| Abstract, conclusion | 21–64% more than standard | **42–67% more for 25–200 AEDs** (+42% at 25, +63% at 50, +67% at 100, +46% at 200; significant for p ≥ 25) [cv2_results.csv] |
+| RQ2 results, Discussion | assuming 24/7 overstates gains by 119–158% | **67–106%** out-of-sample (p=25: 70%, p=50: 73%, p=100: 67%, p=200: 71%, p=10: 106%) [hours2.csv] |
+| RQ2 results | hours-aware plan +49% at p=50, cabinets another +49% | Hours-aware plan delivers **18.6** at p=50, versus 15.1 for the hours-blind plan (+23%). The same model with **24/7 cabinets delivers 26.1 (+41%)**. At 100 AEDs: 38.2 vs 24.5 (+56%). [cv2_results.csv] |
+| RQ2 results | midnight–3am indoor gets < 1/4 of cabinet benefit | recompute from hours_profile2.csv, or delete |
+| RQ2 results | generous hours: 34–47%, cabinets 23–28% | **not rerun yet. Delete, or I can rerun it.** |
+| Discussion, rec. 1 | 50 cabinets beat 200 indoor (59.7 vs 55.8) | **Delete. It was in-sample and is false out-of-sample** (50 cabinets 26.1 vs 200 indoor 28.4). Correct claim: **25 cabinets ≈ 50 indoor AEDs (19.1 vs 18.6), and 100 cabinets beat 200 indoor AEDs (38.2 vs 28.4)**, so a 24/7 cabinet is worth about **two** indoor AEDs. |
+| Discussion, rec. 2 | walks of 200–500 m still often reach patients first | An AED **loses half its value within ~123 m** of walking, keeps ~9% at 300 m and ~1% at 500 m (new Fig. 8, reach curve). Say: "value decays smoothly with distance; a hard 100 m cutoff throws away the useful 100–250 m range." |
+| Discussion, rec. 4 | 85% parity costs under 5% | In-sample (main model): **90% parity costs 0.1% at p=50**, and 95% costs 0.9%. At p=25, 90% costs 2.6%. **Out-of-sample, the fairness constraint has no detectable cost**: at φ=0.85, total was 19.7 vs 18.6 unconstrained (within noise). [fairness.csv, fairness_oos.csv] |
+| Discussion, rec. 4 / RQ4 | least-vulnerable quartile (Q1) is worst served | With the corrected distances, the worst served is **Q2**, which contains the large rural south of the city and has the **lowest site density (0.65 sites/km²)**. Out-of-sample per 100 arrests: Q1 0.77, **Q2 0.46**, Q3 0.77, Q4 0.80. The geography point still holds: it's density, not income. |
+| Estimated clinical impact | 4.3 survivors (2.8 OOS), cabinets 6.5 | Use OOS only: 18.6 × 0.108 ≈ **2.0** extra survivors over 30 months for 50 indoor AEDs, and 26.1 × 0.108 ≈ **2.8** with cabinets. Keep your caveats. Also add that the 0.108 factor applies to all dispatches, including home arrests, so it's an upper bound. |
+| Limitations | excluding imputed records produced identical conclusions | "...did not change the ranking of methods: our model still beat the classic one at p = 25, 50 and 100 (all 95% CIs above zero)." [sensitivity2.csv] |
+| Background | Weisfeldt: survival roughly doubles, 38% vs 7% | That compares the shocked subgroup with *everyone*. Use instead: **24% with an AED applied vs 9% with bystander CPR alone** (Weisfeldt 2010), and Pollack's 66.5% vs 43.0%. |
+| Background / abstract | 137,000 Americans each year | "about 137,000 arrests reported to CARES in 2024 (a registry covering about 186 million people)." It isn't the US total. |
+| Lit review | Hindborg: benefit grows with delay | Hindborg found benefit **specifically when EMS took 7–9 minutes** in public arrests. The "grows progressively" quote is Pollack 2018. |
+
+## Data numbers that changed
+
+- **Within 100 m walking of any candidate site: 3.1%** (was 7.2%). Within 300 m: 21.0%. Within 500 m: 40.5%.
+- 51 arrests and 46 sites are more than 150 m from the walking network and are treated as unreachable on foot.
+- **Robustness:** 10 assumptions × 3 budgets = 30 checks. **Ours beats classic in 30/30, and the CI excludes zero in 28/30.** The two exceptions are a 300 m walk limit at p=25 and dropping the top-20 addresses at p=25. New this time: AED setup time of 1.5 min, and EMS arrival-to-shock of 2 min. [sensitivity2.csv]
+- **Forward split** (train 2017–18, test 2019 H1): ours beats classic at every budget: 1.83 vs 1.15, 3.47 vs 2.10, 4.51 vs 2.24, 6.69 vs 2.29, 7.00 vs 2.98. **Per fold, it wins 23 of 25.** [cv2_results.csv fold4 column]
+
+## Stronger baselines to report (Table 2 replacement)
+
+These are out-of-sample potential survivors over 30 months, all methods with exactly p AEDs.
+
+| Method | p=10 | 25 | 50 | 100 | 200 |
+|---|---|---|---|---|---|
+| Random | 0.8 | 1.5 | 3.1 | 6.1 | 11.8 |
+| Classic MCLP, 100 m (assumes 24/7) | 3.2 | 8.3 | 11.4 | 14.7 | 19.5 |
+| MCLP 100 m + opening hours (Sun 2016 style) | 4.8 | 8.9 | 11.2 | 14.8 | 19.9 |
+| MCLP 300 m | 5.5 | 9.2 | 11.6 | 17.4 | 24.4 |
+| Survival, no hours (Pourghaderi 2021 style) | 5.7 | 11.2 | 15.1 | 22.8 | 27.1 |
+| Survival + hours, own response time | 5.5 | 13.3 | 17.3 | 24.0 | 28.3 |
+| Survival + hours, median response time | 5.8 | 12.2 | 19.9 | 24.7 | 28.1 |
+| **Expected survival (main)** | 5.3 | **11.7** | **18.6** | **24.5** | **28.4** |
+| Main model in 24/7 outdoor cabinets | 11.7 | 19.1 | 26.1 | 38.2 | 46.4 |
+
+At p=50 and p=100 the main model significantly beats random, all three MCLP variants, and survival-without-hours (clustered 95% CIs above zero). The three response-time variants (own, median, distribution) are not significantly different from each other, which is the RQ3 result.
+
+**100 m coverage** (the classic method's own metric, open AED within 100 m): ours ≥ classic for p ≥ 50 (1.0% vs 0.9% at 50, 1.2% vs 1.0% at 100).
+
+## New results to add (more novelty)
+
+1. **Reach curve (new Fig. 8, left).** The expected survival gain from an AED at walking distance d is the survival gain averaged over the city's real EMS response times. It's derived, not assumed. **Half-value distance: ~123 m** at 1.4 m/s. This explains why the 100 m guideline is roughly right, and why a hard cutoff is wrong.
+2. **Distributional model.** Because location explains only 7% of response-time variance, plan with E_R[g], the gain averaged over response times. The average of monotone submodular functions is still monotone submodular, so the greedy guarantee still holds. It **needs only a city's response-time distribution**, not incident-level times, so it transfers to cities that don't publish incident data.
+3. **Bound, corrected and budget-free.** With an AED at every site, Q1 can get at most C₁ = 0.0123 per arrest, while the all-sites citywide average is T∞ = 0.0153. So parity relative to the all-sites average is capped at **φ ≤ 0.81**, whatever the budget. Per budget, the bound C_min / T_p is 0.89 at p=100, and the solver found 0.85 feasible and 0.90 infeasible, consistent with it. At p=25 and 50 the bound exceeds 1, so the budget limits fairness, not the bound. State it as a *necessary* condition.

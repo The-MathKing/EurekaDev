@@ -50,21 +50,41 @@ def load():
     return o, s, pairs
 
 
-def gains(o, s, pairs, prm: Params):
-    """Return DataFrame (i, j, g) of positive survival gains, respecting opening hours."""
-    p = pairs[pairs.walk_m <= prm.max_walk_m].copy()
-    r = o.response_min.values[p.i.values]
+def survival_gain(walk_m, r, prm: Params):
+    """Gain in survival probability from an AED at walking distance walk_m when EMS takes r minutes."""
     c = prm.call_delay
-    t_aed = c + 2 * p.walk_m.values / prm.walk_speed / 60 + prm.setup_min   # AED on chest
-    t_ems = c + r + prm.ems_defib_min                                         # EMS shock
+    t_aed = c + 2 * walk_m / prm.walk_speed / 60 + prm.setup_min   # AED on chest
+    t_ems = c + r + prm.ems_defib_min                               # EMS shock
     if prm.survival == "valenzuela":
         base = s_valenzuela(c + r, t_ems)
         # Assumes the bystander starts CPR on AED arrival (AED voice prompts) if EMS not yet there.
         with_aed = s_valenzuela(np.minimum(t_aed, c + r), np.minimum(t_aed, t_ems))
     else:
-        base = s_demaio(t_ems)
-        with_aed = s_demaio(np.minimum(t_aed, t_ems))
-    p["g"] = with_aed - base
+        # De Maio's predictor is the response interval measured from the 911 call.
+        base = s_demaio(r)
+        with_aed = s_demaio(np.minimum(t_aed - c, r))
+    return with_aed - base
+
+
+def reach_curve(walk_m, rt_sample, prm: Params):
+    """Expected gain E_R[survival_gain(d, R)] over an empirical sample of response times."""
+    walk_m = np.asarray(walk_m, dtype=float)
+    r = np.asarray(rt_sample, dtype=float)
+    return survival_gain(walk_m[:, None], r[None, :], prm).mean(axis=1)
+
+
+def gains(o, s, pairs, prm: Params, rt_sample=None):
+    """Return DataFrame (i, j, g) of positive survival gains, respecting opening hours.
+
+    With rt_sample, each arrest's own response time is replaced by the expectation over that
+    sample, so g_ij depends only on walking distance (and opening hours).
+    """
+    p = pairs[pairs.walk_m <= prm.max_walk_m].copy()
+    if rt_sample is None:
+        p["g"] = survival_gain(p.walk_m.values, o.response_min.values[p.i.values], prm)
+    else:
+        grid = np.arange(0, prm.max_walk_m + 5, 5.0)
+        p["g"] = np.interp(p.walk_m.values, grid, reach_curve(grid, rt_sample, prm))
     if prm.hours == "osm":
         A, _ = availability(s)
         t = o.ReceivedTime.iloc[p.i.values]
