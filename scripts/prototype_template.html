@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AED Placement Explorer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --bg: #f7f6f3; --panel: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --border: #e2e0db;
+    --accent: #c0392b; --cabinet: #2e8b57; --classic: #2c6fbb; --bar-bg: #ecebe7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416; --panel: #1e1e21; --text: #ececee; --muted: #9a9aa2; --border: #2e2e33;
+      --accent: #e5604f; --cabinet: #4cb67d; --classic: #5b9be0; --bar-bg: #2a2a2e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141416; --panel: #1e1e21; --text: #ececee; --muted: #9a9aa2; --border: #2e2e33;
+    --accent: #e5604f; --cabinet: #4cb67d; --classic: #5b9be0; --bar-bg: #2a2a2e;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--text);
+         font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         display: grid; grid-template-columns: 340px 1fr; height: 100vh; }
+  aside { background: var(--panel); border-right: 1px solid var(--border); padding: 18px 18px 24px;
+          overflow-y: auto; }
+  h1 { font-size: 18px; margin: 0 0 2px; }
+  .sub { color: var(--muted); font-size: 12.5px; margin: 0 0 16px; }
+  label.h { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
+            color: var(--muted); margin: 14px 0 6px; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .pval { font-size: 26px; font-weight: 650; }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border);
+         border-radius: 8px; overflow: hidden; }
+  .seg button { background: transparent; color: var(--text); border: 0; padding: 8px 4px; font: inherit;
+                font-size: 12.5px; cursor: pointer; border-right: 1px solid var(--border); }
+  .seg button:last-child { border-right: 0; }
+  .seg button.on { background: var(--text); color: var(--panel); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+  .card { border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+  .card .v { font-size: 20px; font-weight: 650; }
+  .card .k { font-size: 11.5px; color: var(--muted); }
+  .bars .row { display: grid; grid-template-columns: 74px 1fr 46px; align-items: center; gap: 8px;
+               font-size: 12px; margin: 5px 0; }
+  .bars .track { background: var(--bar-bg); border-radius: 4px; height: 10px; overflow: hidden; }
+  .bars .fill { height: 100%; border-radius: 4px; background: var(--accent); transition: width .2s; }
+  .legend { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); }
+  .grad { flex: 1; height: 8px; border-radius: 4px;
+          background: linear-gradient(90deg, #ffffb2, #fecc5c, #fd8d3c, #f03b20, #bd0026); }
+  .about { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border);
+           margin-top: 16px; padding-top: 12px; }
+  #map { height: 100%; width: 100%; }
+  .aed-pin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
+             box-shadow: 0 0 0 1px rgba(0,0,0,.5); }
+  @media (max-width: 760px) {
+    body { grid-template-columns: 1fr; grid-template-rows: auto 60vh; height: auto; }
+    aside { border-right: 0; border-bottom: 1px solid var(--border); padding: 14px 16px; }
+    #map { height: 60vh; }
+  }
+</style>
+</head>
+<body>
+<aside>
+  <h1>AED Placement Explorer</h1>
+  <p class="sub">Virginia Beach, VA &middot; 2,706 cardiac arrests (2017&ndash;2019) &middot; 929 candidate host sites</p>
+
+  <label class="h" for="p">Number of AEDs</label>
+  <div class="pval" id="pval">50</div>
+  <input type="range" id="p" min="1" max="200" value="50">
+
+  <label class="h">Placement strategy</label>
+  <div class="seg" id="seg">
+    <button data-k="indoor" class="on">Indoor<br>(open hours)</button>
+    <button data-k="cabinet">24/7<br>cabinets</button>
+    <button data-k="classic">Classic<br>MCLP</button>
+  </div>
+
+  <label class="h">Results</label>
+  <div class="stats">
+    <div class="card"><div class="v" id="gain">&ndash;</div><div class="k">expected survival gain<br>(potential survivors)</div></div>
+    <div class="card"><div class="v" id="imp">&ndash;</div><div class="k">vs. classic MCLP<br>at the same p</div></div>
+  </div>
+
+  <label class="h">Gain per 100 arrests, by vulnerability (CDC SVI)</label>
+  <div class="bars" id="bars"></div>
+
+  <label class="h">EMS response time</label>
+  <div class="legend"><span>2 min</span><div class="grad"></div><span>15+ min</span></div>
+
+  <div class="about">
+    <b>How it works.</b> Each candidate site is scored by how much it raises the probability of survival for
+    nearby cardiac arrests if a bystander walks to fetch its AED, compared with waiting for the ambulance that
+    actually arrived (Valenzuela et al. 1997 survival model, real walking routes). Sites are added one at a time
+    by a greedy algorithm, which matched the exact integer-program optimum on this data; the indoor strategy only
+    counts a site if it was open at the time of the 911 call. Gains are <i>potential</i> survivors: they assume a
+    shockable rhythm and a willing bystander, so real-world numbers are smaller.
+  </div>
+</aside>
+<div id="map"></div>
+
+<script>
+const D = __DATA__;
+const COLORS = { indoor: "--accent", cabinet: "--cabinet", classic: "--classic" };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+const map = L.map("map", { preferCanvas: true, zoomControl: true }).setView([36.81, -76.07], 11);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 18, attribution: "&copy; OpenStreetMap contributors"
+}).addTo(map);
+
+function rtColor(r) {
+  const stops = ["#ffffb2", "#fecc5c", "#fd8d3c", "#f03b20", "#bd0026"];
+  const t = Math.max(0, Math.min(1, (r - 2) / 13));
+  return stops[Math.min(4, Math.floor(t * 5))];
+}
+const arrests = L.layerGroup().addTo(map);
+for (const [lat, lon, rt, q, h] of D.arrests) {
+  L.circleMarker([lat, lon], { radius: 2.5, weight: 0, fillOpacity: 0.65, fillColor: rtColor(rt) })
+    .bindTooltip(`EMS response ${rt} min &middot; call at ${String(h).padStart(2, "0")}:00`)
+    .addTo(arrests);
+}
+
+const sites = L.layerGroup().addTo(map);
+let scenario = "indoor";
+const slider = document.getElementById("p");
+
+function at(arr, p) { return arr.length ? arr[Math.min(p, arr.length) - 1] : 0; }
+
+function render() {
+  const p = +slider.value;
+  const S = D.scenarios[scenario], C = D.scenarios.classic;
+  document.getElementById("pval").textContent = p;
+
+  sites.clearLayers();
+  const color = css(COLORS[scenario]);
+  S.order.slice(0, p).forEach((j, k) => {
+    const [lat, lon, kind, name, hours] = D.sites[j];
+    const icon = L.divIcon({ className: "", html: `<div class="aed-pin" style="background:${color}"></div>`,
+                             iconSize: [16, 16], iconAnchor: [8, 8] });
+    L.marker([lat, lon], { icon }).bindPopup(
+      `<b>#${k + 1} ${name || kind}</b><br>${kind}<br><small>${hours}</small><br>` +
+      `Marginal gain: <b>${S.marg[k].toFixed(3)}</b>`).addTo(sites);
+  });
+
+  const g = at(S.total, p), c = at(C.total, p);
+  document.getElementById("gain").textContent = g.toFixed(1);
+  document.getElementById("imp").textContent =
+    scenario === "classic" ? "baseline" : (c > 0 ? `${g >= c ? "+" : ""}${Math.round((g / c - 1) * 100)}%` : "–");
+
+  const q = at(S.quart, p) || [0, 0, 0, 0];
+  const per = q.map((v, i) => 100 * v / D.n_by_q[i]);
+  const mx = Math.max(...per, 1e-9);
+  const names = ["Q1 least", "Q2", "Q3", "Q4 most"];
+  document.getElementById("bars").innerHTML = per.map((v, i) =>
+    `<div class="row"><span>${names[i]}</span><div class="track"><div class="fill"
+      style="width:${(100 * v / mx).toFixed(1)}%;background:${color}"></div></div><span>${v.toFixed(2)}</span></div>`
+  ).join("");
+}
+
+slider.addEventListener("input", render);
+document.querySelectorAll("#seg button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#seg button").forEach(x => x.classList.toggle("on", x === b));
+  scenario = b.dataset.k;
+  render();
+}));
+render();
+</script>
+</body>
+</html>

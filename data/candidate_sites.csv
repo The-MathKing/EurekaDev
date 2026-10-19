@@ -1,0 +1,931 @@
+osm_id,lat,lon,kind,name,opening_hours
+node/356567948,36.5860051,-76.0828632,place_of_worship,Blackwater Church,
+node/356568069,36.5576529,-76.0735417,place_of_worship,Cava Church,
+node/356568204,36.5970969,-76.0215957,school,Creeds School,
+node/356568361,36.8504217,-76.1607771,place_of_worship,Faith Church,
+node/356568370,36.8559793,-76.026041,place_of_worship,First Colonial Church,
+node/356568414,36.8496332,-76.0147211,school,Virginia Beach Friends School,
+node/356568551,36.8393762,-76.1503636,place_of_worship,Holland Road Chapel,
+node/356568683,36.6048746,-76.01604,place_of_worship,Kala Church,
+node/356569241,36.6801512,-76.0182633,place_of_worship,Pleasant Ridge Church,
+node/356569284,36.5693193,-76.0757642,place_of_worship,Princess Anne Church,
+node/356569418,36.8265369,-76.2257716,place_of_worship,Saint Brides Church,
+node/356569506,36.7705402,-76.1238713,place_of_worship,Salem Church,
+node/356602074,36.8601484,-75.9810408,post_office,Seapines Station Virginia Beach Post Office,Mo-Fr 08:30-17:00
+node/356602093,36.6548737,-76.0332635,post_office,Back Bay Station Virginia Beach Post Office,Mo-Fr 08:00-12:00
+node/356605197,36.7229518,-75.9368425,place_of_worship,Sandbridge United Methodist Church,
+node/356606265,36.8522947,-76.1339714,school,Ivy League Academy,
+node/356606283,36.8676258,-75.9819519,school,Children's House of Galilee,
+node/356606438,36.8250566,-76.1616086,school,Kemps Landing Magnet School,
+node/356606439,36.8011827,-76.2023,school,Level Green Christian School,
+node/356606484,36.8160683,-76.175019,school,Hope Lutheran Preschool,
+node/356606523,36.8825959,-76.0438383,school,Virginia Beach Country Day School,
+node/356606616,36.8233852,-76.2203363,school,Saint Matthews School,
+node/356606637,36.7827944,-76.1923561,school,Atlantic Shores Christian School,
+node/356606674,36.7608158,-76.0658536,school,Courthouse Preschool,
+node/356606770,36.8425835,-76.1789067,school,ECPI College of Technology,
+node/356606816,36.8920376,-76.1797924,school,Virginia Tech - Hampton Roads Center,
+node/367981476,36.8105007,-75.9953314,school,Virginia Beach Fire And Emergency Medical Services Training Center,
+node/367985631,36.5841667,-76.0852778,fire_station,Blackwater Fire Station Number 13,
+node/367989721,36.7860463,-76.0612442,police,Virginia Beach Police Department,
+node/367990365,36.8451283,-75.9966006,police,Virginia Beach Law Enforcement and Training Academy,
+node/1559184783,36.7968074,-76.0992631,supermarket,Farmers International Foods,
+node/1559184824,36.7934868,-76.0798654,supermarket,Food Lion,
+node/2050880481,36.7682087,-76.0159099,supermarket,Harris Teeter,Mo-Su 06:00-24:00
+node/2050880484,36.7627194,-76.0131529,school,Golden Slippers Dance Academy,
+node/2050896432,36.845143,-75.974434,pharmacy,Barr's Pharmacy,
+node/2063358973,36.8655596,-76.0500305,place_of_worship,Church of the Redeemer,
+node/2067338119,36.7734081,-76.0846697,sports_centre,The Little Gym,
+node/2700281463,36.8487071,-76.024771,supermarket,Trader Joe's,Mo-Su 08:00-21:00
+node/2840023552,36.8121652,-76.0952956,fuel,CITGO,
+node/2840023556,36.8127917,-76.0976711,fuel,7-Eleven,
+node/3075905167,36.8482507,-76.0246387,sports_centre,Vec's Plex,
+node/3108353184,36.9049087,-76.1514811,supermarket,Food Lion,
+node/3108353190,36.905129,-76.1519908,bank,Navy Federal Credit Union,
+node/3108382175,36.9045717,-76.1267749,fuel,Sunoco,
+node/3146384468,36.8050551,-76.1325213,pharmacy,CVS Pharmacy,
+node/3146384473,36.800907,-76.1302719,fuel,Mobil,06:00-24:00
+node/3146384474,36.801065,-76.130074,convenience,Joe's Kwik Mart,06:00-24:00
+node/3146467020,36.8197891,-76.1199881,fuel,Exxon,
+node/3146467021,36.8199462,-76.1198293,convenience,Tiger Mart,24/7
+node/3146488552,36.8229558,-76.1512664,fuel,,
+node/3146488553,36.8232025,-76.1511193,convenience,,
+node/3146505753,36.7810193,-76.1920156,fuel,,
+node/3146505757,36.7812563,-76.1919875,convenience,,
+node/3146505758,36.7808656,-76.1930404,pharmacy,,
+node/3151831459,36.7951574,-76.1193246,supermarket,Nicks Oriental Grocery,
+node/3151852942,36.7548872,-76.0651793,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+node/3151867763,36.7865391,-75.9981102,convenience,7-Eleven,
+node/3151867764,36.7865986,-75.9984924,fuel,7-Eleven,
+node/3158461287,36.8705695,-76.1711051,fuel,7-Eleven,
+node/3158461288,36.870615,-76.170951,convenience,7-Eleven,
+node/3158493547,36.8717305,-76.1701655,sports_centre,Tae Kwon Do Champion,
+node/3158493549,36.8717627,-76.169908,sports_centre,T2 Fitness,
+node/3158792481,36.8384593,-76.0643261,fuel,7-Eleven,
+node/3158792482,36.8384593,-76.0639338,convenience,7-Eleven,24/7
+node/3158792758,36.8413558,-75.9957029,fuel,Shell,
+node/3158792759,36.8411503,-75.9957052,convenience,Shell,
+node/3407122177,36.8592442,-75.9795164,pharmacy,CVS Pharmacy,
+node/3810758075,36.8688277,-76.1847219,sports_centre,Everett Tennis Center,
+node/3811103454,36.870424,-76.189863,sports_centre,Alpine Climbing Tower,
+node/4025117529,36.850065,-75.9757068,convenience,Quick Food Mart,
+node/4025117544,36.8532891,-75.9765901,convenience,Vacation Market,
+node/4025136243,36.8633419,-75.9793906,convenience,Shore Paradise Gift Shop & Food Mart,
+node/4025136248,36.8575371,-75.9778198,convenience,,
+node/4056589014,36.816773,-75.987928,sports_centre,Adventure Park,
+node/4115360823,36.840829,-76.104382,supermarket,Food Lion,Mo-Su 07:00-23:00
+node/4115360825,36.841038,-76.0865399,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+node/4125130554,36.8110671,-76.2015186,convenience,Skymart,Mo-Su 06:00-00:00
+node/4139491489,36.7640462,-76.0910793,sports_centre,USA Field Hockey National Training Center,
+node/4223812853,36.9118307,-76.0668345,supermarket,Food Lion,Mo-Su 06:00-23:00
+node/4223816389,36.8594094,-76.1758525,fuel,,
+node/4264672500,36.7716745,-76.1976514,place_of_worship,The Gathering at Scott Memorial UMC,
+node/4293985601,36.8185564,-76.2199465,convenience,,
+node/4460963233,36.8046784,-76.0799514,place_of_worship,The Potter's House,
+node/4505442584,36.6661734,-76.0283506,school,Back Bay Christian Academy,
+node/4538367712,36.7544557,-76.0085279,bank,Navy Federal Credit Union,
+node/4538372772,36.7599903,-76.0062239,post_office,The UPS Store,
+node/4545267778,36.8453017,-75.9838539,supermarket,,
+node/4562405190,36.8057872,-76.1888761,sports_centre,Indian River Family YMCA,Mo-Th 05:30-20:00; Fr 05:30-19:00; Sa 08:00-16:00
+node/4637813530,36.8267291,-76.1502806,community_centre,Kempsville Lake Community Association,
+node/4919246542,36.8397966,-76.1814813,convenience,Arrowhead Food Mart,
+node/5624350529,36.7848506,-76.002074,supermarket,Food Lion,
+node/5693997323,36.8425288,-76.0096152,fuel,Sunoco,
+node/5694007722,36.8504105,-76.0207958,pharmacy,Rite Aid,
+node/5694071521,36.8530513,-76.0183313,pharmacy,Rite Aid,
+node/5694071621,36.8500951,-76.0226335,pharmacy,Walgreens,
+node/5694149591,36.8399571,-75.9729576,convenience,Ocean Food Mart,
+node/5695664426,36.8378981,-75.9723873,convenience,Prise's Food Mart,
+node/5746016567,36.9100911,-76.0743181,place_of_worship,Cape Henry Church,
+node/5746016571,36.910134,-76.0742252,fitness_centre,Next Level Fitness,
+node/5910669797,36.8980568,-76.1855215,sports_centre,East Coast Gold Weightlifting,
+node/6275890532,36.7766791,-76.0878062,pharmacy,Walgreens,
+node/6397288138,36.7968469,-76.1747777,fuel,7-Eleven,
+node/6410328450,36.9100488,-76.0771661,fuel,BP,
+node/6410328451,36.9098666,-76.0770883,convenience,,
+node/6410328452,36.9110358,-76.0715593,fuel,,
+node/6410328453,36.9109065,-76.0716247,convenience,,
+node/6629729129,36.7543123,-76.0654696,fitness_centre,Club Pilates,
+node/7946026033,36.8524116,-76.0243059,fitness_centre,Pure Barre,
+node/7946026039,36.8517287,-76.0248102,fitness_centre,Orangetheory Fitness,
+node/7946026044,36.8523429,-76.0245675,bank,Langley Federal Credit Union,
+node/7946026068,36.8513925,-76.0215365,pharmacy,CVS Pharmacy,
+node/7946026070,36.8501334,-76.0233531,fitness_centre,FastFit,
+node/7946026104,36.8527305,-76.0203299,post_office,Park Mail,
+node/7946026109,36.8528221,-76.0196467,supermarket,The Fresh Market,
+node/7946026112,36.8531045,-76.0180735,fitness_centre,CycleBar,
+node/7946343473,36.8405866,-76.1314852,bank,Atlantic Union Bank,
+node/7946343476,36.840595,-76.1323044,bank,First Advantage Bank,
+node/7946395223,36.8487212,-76.0363429,fitness_centre,Hot House Yoga,
+node/7946395228,36.8482976,-76.035373,bank,Navy Federal Credit Union,
+node/7946395259,36.847989,-76.018318,post_office,Hilltop Oceana Post Office,Mo-Fr 08:30-17:00; Sa 09:00-14:00
+node/7946395272,36.8537733,-76.0160656,sports_centre,Hilltop Family YMCA,
+node/7946399698,36.8404963,-75.9949252,supermarket,Food Lion,Mo-Su 06:00-23:00
+node/7946399701,36.8408678,-75.9946954,fitness_centre,Workout Anytime,24/7
+node/7946399722,36.8430243,-76.0505915,supermarket,Food Lion,Mo-Su 07:00-23:00
+node/7946399764,36.8461158,-76.0494667,fitness_centre,Rock Box Fitness,"Mo,We 05:00-19:00; Tu,Th 05:00-20:00; Fr 05:00-17:30; Sa 08:30-12:00; Su 09:30-12:00"
+node/7946399779,36.8406329,-76.0621196,fitness_centre,Workout Plus,
+node/7946399782,36.8405521,-76.0616938,fitness_centre,Dash Fit,"Mo-Tu,Th 10:00-19:00; We,Fr 10:00-18:00; Sa 10:00-17:00"
+node/7946399790,36.8433832,-76.0664064,fitness_centre,Hot Yoga,Mo-Su 09:00-11:00; Mo-Fr 17:00-19:00
+node/7946399806,36.8427462,-76.0648133,fitness_centre,Performance Pilates,Mo-Th 08:00-19:00; Fr 07:00-18:00; Sa 08:00-12:00
+node/7946399814,36.8453803,-76.06977,fitness_centre,OneLife Fitness,"Mo-Th 05:00-23:00; Fr 05:00-22:00; Sa,Su 07:00-20:00"
+node/7946399883,36.8390377,-76.1136338,convenience,,
+node/7946399884,36.8387784,-76.1135806,fuel,,
+node/7946399939,36.840381,-76.1134485,post_office,The UPS Store,Mo-Fr 09:00-19:00; Sa 09:00-17:00; Su 11:00-16:00
+node/7946399940,36.8406289,-76.1141535,fitness_centre,Planet Fitness,Mo 05:00-00:00; Tu-Th 00:00-00:00; Fr 00:00-22:00; Sa-Su 07:00-19:00
+node/7946399941,36.8409554,-76.1150551,bank,Navy Federal Credit Union,Mo-Fr 09:00-17:00; Sa 09:00-13:00
+node/7946399949,36.8463984,-76.1297034,fitness_centre,Drop Box Fitness,"Mo-Fr 05:30-08:30,16:30-17:30; Sa 09:00-11:30; Su 09:00-10:30"
+node/7946399973,36.8440406,-76.1317165,pharmacy,Walgreens,"Mo-Fr 09:00-13:30,14:00-19:00"
+node/7946399974,36.8460452,-76.1356354,supermarket,The Fresh Market,Mo-Su 08:00-21:00
+node/7946400041,36.8431132,-76.1385015,bank,Langley Federal Credit Union,Mo-Fr 08:30-17:00; Sa 08:30-12:30
+node/7946465915,36.8198267,-76.0720082,fitness_centre,Yoga Studio,
+node/7946471174,36.8447123,-76.1447201,supermarket,Food Lion,Mo-Su 06:00-23:00
+node/7946482700,36.8446012,-76.1463459,supermarket,J Mart,Tu-Sa 10:00-17:00; Su 12:00-17:00
+node/7946482711,36.8523342,-76.1739001,fuel,RaceWay,
+node/7946482712,36.8520643,-76.1740424,convenience,,Mo-Su 05:00-23:00
+node/7949692496,36.8129757,-76.0725223,fitness_centre,,
+node/8203001328,36.7562883,-76.0103532,fitness_centre,CycleBar,
+node/8203001347,36.7579757,-76.0077903,fitness_centre,Burn Boot Camp,
+node/8203001365,36.7606211,-76.0062209,pharmacy,Walgreens,
+node/8203001378,36.7605921,-76.0106492,fitness_centre,Fat Frogs Bike & Fitness,
+node/8203081357,36.7516355,-76.0117897,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+node/8203081375,36.7522533,-76.0121386,fitness_centre,Orangetheory Fitness,
+node/8220413105,36.8295703,-76.0945608,pharmacy,CVS Pharmacy,"Mo-Fr 08:00-13:30, 14:00-20:00; Sa-Su 09:00-13:30, 14:00-18:00"
+node/8220413369,36.8130671,-76.1016605,place_of_worship,New Beginning Outreach Church,
+node/8220413419,36.8123286,-76.0950719,convenience,Happy Shopper,
+node/8220413431,36.8155238,-76.1124523,pharmacy,Walgreens,Mo-Sa 09:00-13:30; Su 10:00-13:30; Mo-Fr 14:00-21:00; Sa-Su 14:00-18:00
+node/8220638555,36.8747824,-76.0390511,convenience,7-Eleven,24/7
+node/8232770204,36.8938074,-76.1426649,pharmacy,CVS Pharmacy,"Mo-Fr 09:00-13:30, 14:00-20:00; Sa-Su 10:00-13:30, 14:00-17:00"
+node/8238323819,36.7918388,-76.0800929,fuel,Shell,
+node/8238324117,36.8012216,-76.1000821,pharmacy,Rite Aid,"Mo-Fr 09:00-13:30, 14:00-21:00; Sa-Su 10:00-13:30, 14:00-17:00"
+node/8238327715,36.8059539,-76.1332664,bank,Dollar Bank,
+node/8238327716,36.8070706,-76.1324832,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+node/8313191692,36.8619232,-76.1746292,supermarket,Grand Mart,Mo-Su 08:30-20:30
+node/8729864426,36.7872002,-75.9999405,supermarket,ALDI,Mo-Su 08:00-21:00
+node/8732426398,36.8441788,-76.1199662,supermarket,Aldi,Mo-Su 09:00-20:00
+node/8732474863,36.9036531,-76.1370976,supermarket,Aldi,Mo-Su 09:00-20:00
+node/9101685334,36.8451857,-76.13461,sports_centre,Latitude Climbing and Fitness,Mo-Fr 08:00-22:00; Sa 09:00-22:00; Su 09:00-20:00
+node/9265249121,36.8162918,-76.2140724,pharmacy,Walgreens,Mo-Sa 09:00-13:30; Su 10:00-13:30; Mo-Fr 14:00-21:00; Sa-Su 14:00-18:00
+node/9265249123,36.8117602,-76.2060013,pharmacy,CVS Pharmacy,"Mo-Fr 09:00-13:30, 14:00-21:00; Sa-Su 10:00-13:30, 14:00-18:00"
+node/9265249135,36.7968361,-76.1759616,pharmacy,Walgreens,"Mo-Fr 09:00-13:30,14:00-19:00"
+node/9275369998,36.8343319,-76.0956001,fuel,Mobil,06:00-24:00
+node/9275369999,36.8343133,-76.0958867,convenience,Joe's Kwik Mart,06:00-24:00
+node/9406178456,36.7817834,-75.9992698,fitness_centre,OneLife Fitness,
+node/9519223622,36.8672049,-76.1819268,sports_centre,TowneBank Park,
+node/9519223623,36.8703785,-76.1840028,sports_centre,Trinder Center,
+node/9558331553,36.8659999,-76.1909286,sports_centre,YMCA Camp Red Feather,
+node/9558376742,36.8010393,-75.9871983,sports_centre,YMCA at JT's Camp Grom,
+node/9652359766,36.7233984,-76.0180676,fuel,Pungo Red Barn,
+node/9656843638,36.764585,-76.0128311,supermarket,Publix,Mo-Su 07:00-21:00
+node/10039563540,36.8007781,-76.1906607,police,Regent University Police Department,24/7
+node/10092492817,36.9106066,-76.0731662,convenience,7-Eleven,24/7
+node/10838332973,36.584877,-76.0832748,fire_station,Virginia Beach Fire Department Station 13 Blackwater,
+node/10838413117,36.9164186,-76.1876802,fire_station,Navy Regional Mid - Atlantic Fire and Emergency Services Little Creek Station,
+node/10838413167,36.9157422,-76.1614101,fire_station,Navy Region Mid - Atlantic Fire and Emergency Services Station 5,
+node/10838413365,36.8148613,-76.0272217,fire_station,Oceana Naval Air Station Fire Department,
+node/10838413421,36.7726097,-75.9637375,fire_station,Navy Region Mid - Atlantic Fire and EMS Fire District 3,
+node/11005133253,36.8514084,-76.0279086,fuel,Kroger Gas,
+node/11005218605,36.8294448,-76.1691072,fuel,,
+node/11005218606,36.8297217,-76.1690397,convenience,,
+node/11423420967,36.7763289,-76.085572,fitness_centre,Anytime Fitness,
+node/11587037339,36.8005511,-76.1934385,place_of_worship,Prayer room,24/7
+node/11590648741,36.7968012,-76.1926739,fitness_centre,,24/7
+node/11590648751,36.8014689,-76.196794,place_of_worship,,
+node/11668893723,36.8745442,-76.0390565,fuel,Exxon,
+node/11668893724,36.8754185,-76.037717,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+node/11668893726,36.841381,-75.993115,supermarket,Dollar General Market,08:00-22:00
+node/11668893744,36.7875879,-76.1514169,supermarket,Food Lion,
+node/11715612180,36.8512599,-76.1684604,convenience,Boulevard Stop Mart,Mo-Su 07:00-23:00
+node/11715612662,36.8514846,-76.1690362,supermarket,Asia Grocery,Mo-Sa 09:00-19:00; Su 09:00-18:00
+node/11967102655,36.925979,-76.009732,post_office,Fort Story Post Office,
+node/11967102656,36.774701,-75.961634,post_office,Dam Neck Post Office,Mo-Fr 11:15-15:15
+node/11967102657,36.80703,-76.029885,post_office,Oceana NAS Post Office,Mo-Fr 11:00-15:00
+node/11967102658,36.822916,-76.0577979,post_office,Virginia Beach Post Office,
+node/12183215323,36.8406711,-76.0622834,place_of_worship,Potter's House Christian Center,
+node/12288729814,36.8777207,-76.0423448,pharmacy,Rite Aid,Mo-Sa 09:00-13:30; Su 10:00-13:30; Mo-Fr 14:00-20:00; Sa-Su 14:00-18:00
+node/12288729818,36.8773896,-76.0391321,supermarket,Food Lion,Su-Fr 06:00-23:00; Sa 06:30-23:00
+node/12288729819,36.8735704,-76.0387335,pharmacy,CVS Pharmacy,Mo-Sa 09:00-13:30; Su 10:00-13:30; Mo-Fr 14:00-20:00; Sa-Su 14:00-18:00
+node/12324106086,36.8125289,-76.0976947,convenience,7-Eleven,24/7
+node/12331665607,36.7955916,-75.9869916,sports_centre,Adventureworks Wetland Ziplines,Mo-Sa 10:00-16:00; Su 12:00-16:00
+node/12335572512,36.8220005,-76.1221202,supermarket,Food Lion,Mo-Su 07:00-23:00
+node/12341420673,36.8194473,-76.2140191,place_of_worship,Coastal Virginia Unitarian Universalist,
+node/12341422763,36.8435906,-76.0728916,fitness_centre,F45 Training,Mo-Su 06:00-18:00
+node/12379392863,36.8635288,-76.1309735,supermarket,Food Lion,Fr-We 06:00-23:00; Th 06:00-15:00
+node/12379392882,36.8631075,-76.1316139,convenience,7-Eleven,24/7
+node/12379392883,36.8628613,-76.1316896,fuel,7-Eleven,
+node/12379392884,36.8641152,-76.1315679,bank,BayPort Credit Union,Mo-Th 09:00-17:30; Fr 09:00-18:00
+node/12396422320,36.8739481,-76.1361522,post_office,The UPS Store,Mo-Fr 08:30-19:00; Sa 09:30-15:00
+node/12396422328,36.8712257,-76.1331736,post_office,Virginia Beach Post Office,"Mo-Fr 09:00-13:00, 14:00-17:00; Sa 10:00-12:00"
+node/12396422329,36.8713543,-76.1332278,bank,Dollar Bank,
+node/12396422339,36.855143,-76.1356342,convenience,Miller's,24/7
+node/12396422345,36.8628644,-76.1316952,fuel,7-Eleven,
+node/12396422346,36.8630757,-76.131587,convenience,7-Eleven,24/7
+node/12396422354,36.8641129,-76.1315857,bank,BayPort Credit Union,Mo-Th 09:00-17:30; Fr 09:00-18:00
+node/12396422355,36.863515,-76.1310199,supermarket,Food Lion,Mo-Su 06:00-23:00
+node/12453316709,36.8172764,-76.1277124,convenience,Citgo,Mo-Fr 06:00-23:00
+node/12453316717,36.8060339,-76.1180893,place_of_worship,New Day Church,
+node/12453316744,36.7910736,-76.1099844,fuel,Shell,
+node/12453316745,36.7908674,-76.1099265,convenience,Shell,Mo-Su 06:00-23:00
+node/12472880290,36.8764049,-76.0389804,fitness_centre,Souls on Fire Holistic Health and Wellness,Mo-Fr 08:00-20:00
+node/12511045347,36.800178,-76.1767889,supermarket,Enson Market,Mo-Su 08:30-22:00
+node/12511045350,36.8004123,-76.1772221,post_office,The UPS Store,Mo-Fr 08:00-18:30; Sa 09:00-15:00; Su 10:00-17:00
+node/12547792010,36.8163213,-76.2124188,fitness_centre,DROP Fitness,
+node/12564719618,36.9039822,-76.1261283,fuel,7-Eleven,
+node/12572223297,36.8439719,-76.1534715,supermarket,Tienda Latina La Tapatia 1,Mo-Sa 09:00-21:00; Su 10:00-20:00
+node/12572223300,36.8442673,-76.1542461,supermarket,Leila's Mediterranean,"Mo-Tu,Th-Sa 10:00-18:00; We 14:00-18:00"
+node/12572225929,36.844079,-76.1403087,fitness_centre,Atlas Wellness & MMA,"Mo-We,Fr 07:00-09:00; Mo-We 11:00-21:00; Th 07:00-21:00; Fr 11:00-20:00; Sa 09:00-12:30"
+node/12646867405,36.8437886,-76.1202093,post_office,FedEx Office,Mo-Fr 09:00-19:00; Sa 10:00-18:00
+node/12750710749,36.8410917,-76.1088816,convenience,7-Eleven,24/7
+node/12750710771,36.8415398,-76.0972304,pharmacy,Pharmacy Innovations,Mo-Fr 09:00-17:30
+node/12750710796,36.8399816,-76.0917672,post_office,Mail Depot of Virginia,Mo-Fr 09:00-18:00; Sa 10:00-14:00
+node/12750721603,36.8424011,-76.0899963,pharmacy,Walgreens,Mo-Su 09:00-13:30; Mo-Fr 14:00-21:00; Sa-Su 14:00-18:00
+node/12750721662,36.8419156,-76.0848338,place_of_worship,Palms Church,
+node/12863230392,36.8420036,-76.0494074,fitness_centre,Anabo,Mo-Fr 09:00-17:00
+node/12863230435,36.844097,-76.0475229,fitness_centre,Mary Delk Pilates & Fitness,Mo-Fr 08:00-18:00; Sa 10:00-15:00
+node/12979895788,36.8427317,-76.046475,fitness_centre,Pilates-4-Virginia Beach,Mo 06:30-19:30; Tu 06:30-19:00; We 06:30-20:30; Th-Fr 06:30-18:30; Sa 08:30-12:00; Su 08:00-11:00
+node/12979922224,36.8428317,-76.0260811,convenience,Tinee Giant #568,Mo-Fr 06:00-23:00; Sa 07:00-23:00; Su 08:00-23:00
+node/12979922230,36.8424579,-76.0096326,convenience,Love Food Mart,Mo-Fr 07:30-23:00; Sa-Su 08:30-23:00
+node/13093248904,36.8818435,-76.1869793,post_office,FedEx Office,Mo-Fr 09:00-19:00; Sa 10:00-18:00
+node/13138498001,36.8114496,-76.0994778,fitness_centre,Crunch Fitness - Chimney Hill,Mo-Th 00:00-24:00; Fr 00:00-23:00; Sa-Su 07:00-21:00
+node/13396521791,36.8492957,-76.0372426,fitness_centre,Planet Fitness,
+node/13396521792,36.848514,-76.0343049,bank,Dollar Bank,
+node/13398900201,36.8417413,-76.1298474,supermarket,Trader Joe's,Fr-Tu 09:00-21:00; We 09:00-17:00
+node/13414411435,36.7485428,-76.0082448,fitness_centre,LFT Gym VB,Mo-Su 10:00-17:30
+node/13566090697,36.8566089,-76.1452337,convenience,,
+node/13566090698,36.8567854,-76.1450178,fuel,,
+node/13634131802,36.8272764,-76.1676036,pharmacy,Kempsville Pharmacy,
+node/13657302591,36.7702306,-76.1894937,fitness_centre,Anytime Fitness,24/7
+node/13811871301,36.829038,-76.1416479,convenience,7-Eleven,24/7
+node/13958010202,36.8182254,-76.1413216,sports_centre,Larkspur Swim & Racquet Club,
+node/14137943102,36.8060752,-76.0290041,convenience,Navy Exchange Mini Mart,Mo-Fr 06:00-19:00; Sa-Su 10:00-18:00
+way/37918264,36.851256,-75.9850941,school,Virginia Beach Middle School,
+way/38028116,36.8973044,-76.1405958,school,Hermitage Elementary School,
+way/38028120,36.8984218,-76.1475291,school,Shelton Park Elementary School,
+way/38054683,36.8423735,-75.9797111,school,W T Cooke Elementary School,
+way/47294248,36.7733708,-76.1212465,school,Salem Elementary School,
+way/47294251,36.7664975,-76.1099628,school,New Castle Elementary,
+way/47298168,36.8630882,-76.1631335,school,Williams Elementary School,
+way/47298169,36.8618885,-76.1602414,school,Newtown Elementary School,
+way/47298190,36.8728331,-76.1437861,school,Luxford Elementary School,
+way/47298195,36.8703875,-76.1515429,school,Bayside High School,
+way/47298197,36.8674827,-76.159312,school,Bayside Middle School,
+way/47298343,36.8666854,-76.1809119,school,Chesapeake Bay Academy,
+way/47420739,36.7481538,-76.0003588,school,Red Mill Elementary School,
+way/47421086,36.7713978,-75.9822406,school,Ocean Lakes High School,Mo-Fr 06:30-14:00
+way/47421417,36.7843122,-75.9905205,school,Ocean Lakes Elementary School,
+way/47446041,36.8389309,-76.1701685,school,Point O' View Elementary School,
+way/47446044,36.8314788,-76.1860911,school,Arrowhead Elementary School,
+way/47513621,36.8897459,-76.1347758,school,Thoroughgood Elementary School,
+way/47584430,36.8080849,-75.9927891,school,Birdneck Elementary School,
+way/47589143,36.7659142,-76.0181737,school,,
+way/47609160,36.7680298,-76.0662554,school,Christopher Farms Elementary School,
+way/47609166,36.751865,-76.0320843,school,Princess Anne Elementary School,
+way/47609167,36.748875,-76.0352448,school,Princess Anne Middle School,
+way/47635262,36.7681938,-76.1897691,school,Centerville Elementary School,
+way/47635274,36.7834934,-76.1815352,school,Tallwood High School,
+way/47635279,36.8126527,-76.1541385,school,Kempsville Middle School,
+way/47675799,36.8150948,-76.140838,school,Larkspur Middle School,
+way/47675805,36.8315656,-76.1028368,school,Windsor Woods Elementary School,
+way/47800875,36.7733272,-76.1393309,school,Glenwood Elementary School,
+way/47800878,36.7828013,-76.1282063,school,Rosemont Forest Elementary School,
+way/48557621,36.834931,-76.0845791,school,Lynnhaven Elementary School,
+way/48577346,36.8621987,-76.0952896,school,Kingston Elementary School,
+way/48577988,36.8652992,-76.1282373,school,Pembroke Meadows Elementary School,
+way/48579454,36.8657582,-76.050066,school,Trantwood Elementary School,
+way/48579463,36.8680774,-76.0353525,school,Lynnhaven Middle School,
+way/48579467,36.8735603,-76.0287479,school,First Colonial High School,
+way/48579468,36.8763496,-76.0291663,school,Cape Henry Collegiate School,
+way/48655037,36.8146123,-76.2014368,school,Woodstock Elementary School,
+way/48655462,36.7983286,-76.1451349,school,Indian Lakes Elementary School,
+way/48655480,36.8166241,-76.1788553,school,Fairfield Elementary School,
+way/48674754,36.7927772,-76.1925645,school,Brandon Middle School,
+way/48674787,36.77959,-76.1975481,school,Tallwood Elementary School,
+way/48734382,36.8703059,-76.1354826,school,Old Donation School,
+way/48734409,36.8813603,-76.126506,school,Independence Middle School,
+way/48735000,36.859394,-76.0274318,school,Linkhorn Park Elementary School,
+way/48735352,36.8977624,-76.0616392,school,John B Dey Elementary School,
+way/48735353,36.8972733,-76.0591931,school,Great Neck Middle School,
+way/49062229,36.8992176,-76.0622827,sports_centre,,
+way/50772769,36.8504836,-76.0133,school,,
+way/50801957,36.8046973,-76.2121384,school,College Park Elementary School,
+way/80664188,36.7834164,-76.1445278,school,Salem High School,
+way/80664676,36.8228353,-76.1028918,school,Windsor Oaks Elementary School,
+way/80664678,36.8310792,-76.077063,school,Plaza Middle School,
+way/80665876,36.8198964,-76.077376,school,Brookwood Elementary School,
+way/80668081,36.8053564,-76.1113062,school,Green Run High School,
+way/80668115,36.8034737,-76.1222813,school,White Oaks Elementary School,
+way/80668433,36.8460739,-76.1218818,school,Thalia Elementary School,
+way/80682356,36.804545,-76.0873486,school,Holland Elementary School,
+way/80682367,36.8001575,-76.0917059,school,Green Run Elementary School,
+way/83018219,36.75758,-76.0559636,school,Holland Road Annex,
+way/194580292,36.7620182,-76.0154786,school,The Nimmo Child Development Center,
+way/195926302,36.8128713,-76.0683377,fuel,7-Eleven,
+way/195958467,36.8214412,-76.2236764,place_of_worship,Eastminster Presbyterian Church,
+way/229238458,36.7880944,-76.0073185,school,Corporate Landing Elementary School,
+way/262962181,36.8828122,-76.0318473,school,Alanton Elementary School,
+way/262962218,36.8542857,-76.0866385,school,Kings Grant Elementary School,
+way/262962802,36.8469416,-76.098212,school,Malibu Elementary School,
+way/312598103,36.8089893,-76.218876,convenience,Miller Mart #19,
+way/316467307,36.7877951,-76.0124014,school,Corporate Landing Middle School,
+way/333811771,36.8129182,-75.9921827,school,,
+way/355840549,36.742989,-76.0628224,school,Floyd E. Kellam High School,
+way/366054979,36.8434261,-76.1597834,school,Renaissance Academy,
+way/377722680,36.8679478,-76.1875986,library,Hofheimer Library,
+way/402212530,36.9001618,-76.1363321,place_of_worship,Bayside Baptist Church,
+way/402212540,36.9035139,-76.1354071,post_office,Bayside Station Virginia Beach Post Office,
+way/402213083,36.9048515,-76.1347533,pharmacy,Walgreens,
+way/402213091,36.9047834,-76.1359777,fuel,Wawa,
+way/402213646,36.9030194,-76.1304519,supermarket,Kroger,Mo-Fr 08:00-20:00;Sa 09:00-18:00;Su 10:00-17:00
+way/402213690,36.9050791,-76.1361592,convenience,Wawa,24/7
+way/402216944,36.9044783,-76.1277093,fire_station,,
+way/402217005,36.9054309,-76.1268683,place_of_worship,Bayside Christian Church,
+way/402217405,36.9071601,-76.0988776,place_of_worship,,
+way/402217982,36.9062872,-76.1187895,place_of_worship,Our Saviors Lutheran Church,
+way/402218058,36.9061407,-76.1205188,place_of_worship,Bay Lake United Methodist Church,
+way/402219208,36.9078285,-76.1079768,convenience,7-Eleven,
+way/402233181,36.8717955,-76.1451736,place_of_worship,,
+way/402233212,36.870156,-76.1481824,fuel,7-Eleven,
+way/402233242,36.8700354,-76.1488841,bank,PenFed Credit Union,
+way/402233259,36.8935451,-76.1446071,place_of_worship,New Creation Assembly of God Church,
+way/402233917,36.8955088,-76.1449,fitness_centre,Torch Yoga,
+way/402233926,36.8938765,-76.1531218,place_of_worship,,
+way/402233963,36.894225,-76.1481792,place_of_worship,,
+way/402234373,36.8743726,-76.1384368,fire_station,Davis Corner Fire And Rescue Station Number 2,
+way/402235900,36.8407145,-76.1425018,fire_station,Fire Station 7,
+way/402235904,36.8427326,-76.1430675,supermarket,Walmart Supercenter,Mo-Su 06:00-23:00
+way/402235924,36.84079,-76.1435642,post_office,Witchduck Post Office,Mo-Fr 08:30-17:00; Sa 10:00-14:00
+way/402235972,36.8353856,-76.1449914,place_of_worship,,
+way/402236305,36.841445,-76.1374403,bank,Wells Fargo,Mo-Fr 09:00-17:00; Sa 09:00-12:00
+way/402236330,36.8423419,-76.1451621,convenience,7-Eleven,
+way/402236333,36.8423206,-76.1455376,fuel,7-Eleven,
+way/402242861,36.8454347,-76.1431181,convenience,7-Eleven,
+way/402243572,36.8501896,-76.1546482,place_of_worship,,
+way/402243952,36.8441404,-76.1361748,bank,Truist,
+way/402243957,36.8442053,-76.1373515,convenience,7-Eleven,24/7
+way/402244051,36.8441197,-76.1383215,bank,Bank of America,Mo-Fr 09:00-17:00; Sa 09:00-14:00
+way/402244338,36.8441357,-76.1450816,bank,PNC Bank,Mo-Fr 09:00-17:00
+way/402245215,36.8522915,-76.1351356,place_of_worship,SonRise Christian Church,
+way/402246621,36.8439679,-76.1373775,fuel,Exxon,
+way/402246951,36.8550271,-76.1354456,fuel,Miller's,
+way/402251306,36.8949932,-76.1420533,convenience,7-Eleven,24/7
+way/402251451,36.8956647,-76.1427065,post_office,Virginia Beach Post Office,Mo-Fr 08:00-17:00; Sa 10:00-14:00
+way/402252316,36.8986643,-76.1370701,place_of_worship,,
+way/402252350,36.8981412,-76.1376502,place_of_worship,,
+way/402252441,36.899152,-76.1265681,community_centre,Bayside Recreation Center,
+way/402255721,36.8697982,-76.1327539,library,Bayside Library,
+way/402255787,36.8750114,-76.1339737,bank,ABNB Credit Union,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/402255803,36.8757837,-76.1334767,convenience,7-Eleven,24/7
+way/402256194,36.8839117,-76.133391,place_of_worship,Bayside Presbyterian Church,
+way/402257777,36.8743139,-76.1280591,place_of_worship,,
+way/402258028,36.8708598,-76.1330775,bank,Truist,Mo-Fr 09:00-17:00
+way/402258038,36.869972,-76.1319298,police,Virginia Beach Police Department Third Precinct - Bayside,
+way/402258115,36.875785,-76.1338541,fuel,7-Eleven,
+way/402273327,36.8367101,-76.0760765,place_of_worship,,
+way/402273328,36.8368388,-76.0769653,place_of_worship,,
+way/402273569,36.8343411,-76.0741859,place_of_worship,,
+way/402273886,36.8353141,-76.0682312,place_of_worship,First Baptist Church,
+way/402274176,36.8282478,-76.0780795,convenience,,
+way/402276206,36.8345446,-76.0876952,place_of_worship,,
+way/402276564,36.8280405,-76.0781158,fuel,,
+way/402277352,36.8382257,-76.0655924,place_of_worship,Redeemer Presbyterian Church,
+way/402278527,36.8412641,-76.0820312,place_of_worship,Big House Church,
+way/402278559,36.8426751,-76.0884127,bank,Truist,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-12:00
+way/402278568,36.8410022,-76.0903418,bank,PNC Bank,Mo-Fr 09:00-18:00; Sa 09:00-13:00
+way/402278586,36.840919,-76.0878917,fuel,Sam's Club,
+way/402278721,36.8479518,-76.0828513,place_of_worship,Saint Aidans Church,
+way/402278725,36.8442024,-76.074572,fuel,Wawa,
+way/402279058,36.8441293,-76.0883114,supermarket,Kroger,Mo-Su 06:00-23:00
+way/402279588,36.8532565,-76.0875264,place_of_worship,,
+way/402279663,36.8561167,-76.0876303,place_of_worship,Saint Nicholas Church,
+way/402279672,36.8444979,-76.0746392,convenience,Wawa,24/7
+way/402279708,36.8468534,-76.0821458,fuel,7-Eleven,
+way/402280371,36.8471927,-76.0805437,place_of_worship,,
+way/402282891,36.8639615,-76.0862325,fire_station,Little Neck Fire Station Number 20,
+way/402283437,36.8690849,-76.0906702,place_of_worship,Lynnhaven Church,
+way/402285060,36.8417887,-76.0915739,bank,Wells Fargo,Mo-Fr 09:00-17:00
+way/402285519,36.8408864,-76.1002855,fuel,BJ's Gas,Mo-Sa 06:30-21:00; Su 06:30-19:00
+way/402285562,36.8405829,-76.1012362,bank,Southern Bank,
+way/402287930,36.8850346,-76.057339,sports_centre,Great Neck Recreation Center,
+way/402288160,36.8827049,-76.0436575,place_of_worship,,
+way/402288817,36.8963207,-76.062608,place_of_worship,Francis Asbury Church,
+way/402288890,36.9014038,-76.0696017,place_of_worship,All Saints Episcopal Church,
+way/402296714,36.8594001,-75.9790631,bank,Bank of America,
+way/402297080,36.8675765,-75.9809347,convenience,7-Eleven,
+way/402297093,36.8628966,-75.9825817,place_of_worship,First Baptist Church,
+way/402299058,36.9112706,-76.0698679,fire_station,Virginia Beach Fire Department / Station 1 - First Landing,
+way/402303247,36.9119757,-76.0678497,bank,,
+way/402303380,36.9115439,-76.0717353,fuel,Sunoco,
+way/402303988,36.9101634,-76.0758225,bank,,
+way/402304260,36.9100077,-76.0766042,bank,,
+way/402304265,36.9082785,-76.0709751,place_of_worship,,
+way/402305465,36.9236937,-76.0036824,post_office,Fort Story Post Office,
+way/402305495,36.9240568,-76.0076423,place_of_worship,First Landing Chapel,
+way/402305530,36.9281682,-76.0125076,fire_station,,
+way/402305531,36.9285421,-76.0110348,place_of_worship,Saint Theresa Chapel,
+way/402305701,36.9267835,-76.0088749,fuel,,
+way/402371641,36.843192,-76.0484462,convenience,7-Eleven,24/7
+way/402371837,36.8418493,-76.0555252,convenience,7-Eleven,24/7
+way/402372132,36.8456272,-76.0513335,place_of_worship,New Hope Baptist Church,
+way/402372702,36.8405814,-76.0559973,convenience,Wawa,24/7
+way/402375567,36.8377766,-76.0252471,place_of_worship,Saint Marks Church,
+way/402375610,36.8428738,-76.026342,fuel,Amoco,
+way/402376306,36.8453199,-76.0093744,place_of_worship,,
+way/402376370,36.8431561,-76.0216815,convenience,Wawa,24/7
+way/402376371,36.8428632,-76.021745,fuel,Wawa,
+way/402376915,36.8424087,-76.0134489,place_of_worship,Church of Christ,
+way/402380928,36.8489087,-76.0289045,fuel,7-Eleven,
+way/402380929,36.8488286,-76.0292749,convenience,7-Eleven,
+way/402381208,36.8490084,-76.0329002,fuel,,
+way/402381583,36.8494971,-76.0226985,place_of_worship,Saint Nicholas Greek Orthodox Church,
+way/402381894,36.8539421,-76.0340111,place_of_worship,,
+way/402381901,36.8548675,-76.0250826,convenience,,
+way/402382026,36.8523666,-76.0279244,supermarket,Kroger,Mo-Fr 09:00-20:00;Sa 09:00-18:00;Su 10:00-17:00
+way/402382029,36.8511531,-76.0229502,bank,Truist,
+way/402382030,36.8508848,-76.0280881,supermarket,Whole Foods Market,Mo-Su 08:00-21:00
+way/402382038,36.8465281,-76.0381332,place_of_worship,Eastern Shore Church,
+way/402385150,36.8504779,-76.0216726,fuel,BP,
+way/402385223,36.8517667,-76.0061961,place_of_worship,,
+way/402385410,36.8516955,-76.0162584,bank,Atlantic Union Bank,
+way/402385452,36.8520254,-76.0170677,bank,Wells Fargo,
+way/402385477,36.8507303,-76.0182736,bank,Old Point Network Bank,
+way/402385485,36.8518395,-76.0182072,bank,Fulton Bank,
+way/402385685,36.8470444,-76.0189093,supermarket,Walmart Supercenter,Mo-Su 06:00-23:00
+way/402385986,36.8568133,-76.024885,bank,Bank of America,
+way/402387858,36.8521891,-75.9939557,convenience,Birdneck Food Mart,
+way/402387859,36.8527267,-75.9941538,supermarket,,
+way/402388355,36.8527034,-75.9943514,fuel,,
+way/402393349,36.8352394,-75.9959134,place_of_worship,,
+way/402393666,36.8341579,-75.9979349,place_of_worship,,
+way/402393668,36.8337691,-75.9991038,place_of_worship,Rehoboth Baptist Church,
+way/402393708,36.8428334,-75.9955078,place_of_worship,Mount Olive Baptist Church,
+way/402393769,36.8418725,-75.9914013,convenience,Circle D Food Mart,Su-Th 07:00-23:00; Fr-Sa 07:00-00:00
+way/402393902,36.8420862,-75.9914327,fuel,Amoco,
+way/402397547,36.8332734,-75.9739269,place_of_worship,,
+way/402398743,36.8373277,-75.978839,place_of_worship,Shadowlawn Church,
+way/402400556,36.8389309,-75.9741575,convenience,7-Eleven,
+way/402400705,36.8425874,-75.9762144,school,Star of the Sea Elementary School,
+way/402400706,36.8425468,-75.9756451,place_of_worship,Star of the Sea Catholic Church,
+way/402406614,36.8549217,-75.9785402,convenience,7-Eleven,
+way/402406615,36.8486562,-75.9857802,fuel,BP,
+way/402406649,36.8489381,-75.984973,convenience,Shell,
+way/402406780,36.8478906,-75.9785069,place_of_worship,Virginia Beach Masonic Temple,
+way/402406864,36.8467439,-75.9753171,place_of_worship,Virginia Beach United Baptist Church,
+way/402406939,36.8522436,-75.9778028,convenience,7-Eleven,
+way/402407078,36.8557205,-75.9809973,supermarket,Harris Teeter,Mo-Su 06:00-24:00
+way/402407708,36.8523939,-75.9810414,place_of_worship,,
+way/402407725,36.8529978,-75.9811276,place_of_worship,Temple Emmanuel,
+way/402408632,36.8444377,-75.9835667,library,Oceanfront Area Library,
+way/402408784,36.8434177,-75.9832055,convenience,7-Eleven,24/7
+way/402408791,36.8436418,-75.986158,police,Virginia Beach Police Dept. 2nd Precinct,
+way/402408802,36.8587816,-75.9794656,bank,PNC Bank,
+way/402408818,36.8524063,-75.9764743,pharmacy,Walgreens,
+way/402408827,36.8439185,-75.9854419,fire_station,Virginia Beach Fire Station 11,
+way/402408922,36.8585497,-75.9816272,fuel,BP,
+way/402408976,36.8452963,-75.9760453,convenience,7-Eleven,24/7
+way/402409032,36.8488616,-75.9857528,convenience,,
+way/402414411,36.8755055,-76.0392121,bank,Chartway Federal Credit Union,
+way/402414801,36.8733931,-76.0406873,place_of_worship,,
+way/402415023,36.8760252,-76.0395876,bank,PNC Bank,Mo-Fr 09:00-17:00
+way/402415119,36.8773085,-76.0402785,bank,Dollar Bank,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/402415164,36.8800085,-76.0443284,place_of_worship,,
+way/402416988,36.8652074,-76.0485213,place_of_worship,Great Neck Baptist Church,
+way/402417197,36.865929,-76.0452433,place_of_worship,,
+way/402419460,36.8657197,-76.0357244,library,Great Neck Area Branch Virginia Beach Public Library,
+way/402419595,36.8651541,-76.0335329,fire_station,Virginia Beach Fire Department Station 8 Oceana;Oceana Fire Station Number 8,
+way/402428395,36.8444356,-76.1212968,fire_station,Virginia Beach EMS Station 15,
+way/402428470,36.8410412,-76.1099134,place_of_worship,Emmanuel Lutheran Church,
+way/402429865,36.846859,-76.120093,place_of_worship,,
+way/402431657,36.832108,-76.1288614,sports_centre,Mount Trashmore Family Ymca,
+way/402431896,36.8326698,-76.1349636,place_of_worship,,
+way/402431954,36.8269701,-76.1309004,convenience,7-Eleven,24/7
+way/402431967,36.8431303,-76.1314994,bank,Towne Bank,Mo-Th 09:00-17:00; Fr 09:00-18:00
+way/402432030,36.8267482,-76.1310667,fuel,7-Eleven,
+way/402435964,36.8302426,-76.0963067,fire_station,Fire Station #16 - Plaza/Windsor Woods,
+way/402436976,36.8335427,-76.0959462,convenience,Wawa,24/7
+way/402437232,36.8315934,-76.0960772,place_of_worship,,
+way/402437313,36.8292321,-76.0958678,place_of_worship,RED Church,
+way/402437445,36.8398933,-76.0981494,fuel,Exxon,
+way/402438694,36.8428061,-76.1227468,place_of_worship,Thalia United Methodist Church,
+way/402438758,36.8302326,-76.0970713,library,Windsor Woods Area Branch Virginia Beach Public Library,
+way/402438790,36.838917,-76.1000717,bank,Langley Federal Credit Union,Mo-Fr 08:30-17:00; Sa 08:30-12:30
+way/402438849,36.8335657,-76.0955885,fuel,Wawa,
+way/402438862,36.8398164,-76.0984879,convenience,7-Eleven,24/7
+way/402441258,36.8172972,-76.1273951,fuel,Citgo,
+way/402441780,36.8223591,-76.1261962,convenience,Wawa,24/7
+way/402457442,36.8137522,-76.1017089,convenience,BP Shop,24/7
+way/402457808,36.8156019,-76.1077136,bank,,
+way/402457996,36.8133827,-76.1113734,supermarket,Kroger Marketplace,Mo-Su 06:00-24:00
+way/402458171,36.8177841,-76.1182652,place_of_worship,,
+way/402459836,36.8135709,-76.1005291,bank,,
+way/402459866,36.8174036,-76.1186735,place_of_worship,,
+way/402459915,36.8139407,-76.1015528,fuel,BP,
+way/402466613,36.8167855,-76.1119757,convenience,7-Eleven,24/7
+way/402466770,36.8181855,-76.116888,place_of_worship,,
+way/402466896,36.8248255,-76.0971567,place_of_worship,Saint Francis Church,
+way/402468605,36.8165501,-76.1119586,fuel,7-Eleven,
+way/402480792,36.7493478,-76.0305292,school,MyHomeToo,
+way/402482100,36.7350729,-76.0592499,community_centre,,
+way/402482660,36.7479577,-76.0425325,police,Virginia Beach Police Aviation,
+way/402485531,36.7410079,-76.0852855,place_of_worship,,
+way/402485540,36.740769,-76.0856114,place_of_worship,,
+way/402485847,36.7221959,-76.0074094,place_of_worship,,
+way/402485862,36.7097155,-76.048101,place_of_worship,Beech Grove Church,
+way/402485889,36.7453773,-76.0595183,place_of_worship,,
+way/402485909,36.7474083,-76.0610233,bank,Navy Federal Credit Union,
+way/402486387,36.7442941,-76.0307622,place_of_worship,Wave Church,
+way/402486606,36.7407326,-76.0853388,place_of_worship,,
+way/402489396,36.7437439,-76.1037939,place_of_worship,,
+way/402489559,36.7319748,-76.092722,place_of_worship,Bridge Church,
+way/402489780,36.7334063,-76.0974857,place_of_worship,Camels Chapel,
+way/402492514,36.7533579,-76.0573051,fire_station,Princess Anne Fire Station Number 5,
+way/402493480,36.752651,-76.0549867,bank,PNC Bank,
+way/402493485,36.7530939,-76.0553584,convenience,,
+way/402493555,36.7551809,-76.0603263,bank,,
+way/402493939,36.7572051,-76.0644646,place_of_worship,,
+way/402494326,36.7499834,-76.0788206,place_of_worship,,
+way/402494346,36.7509517,-76.0574769,police,Biulding 11 - Police 1st Precinct & Headquarters,
+way/402494351,36.7502473,-76.0607938,post_office,Princess Anne Post Office,Mo-Fr 08:30-17:00; Sa 10:00-15:00
+way/402494377,36.7656133,-76.0570977,place_of_worship,Forefront Church,
+way/402494388,36.7604812,-76.0659089,place_of_worship,Courthouse Community UMC,
+way/402494455,36.7523846,-76.0547237,fuel,,
+way/402494494,36.7557142,-76.0632638,fuel,7-Eleven,
+way/402494507,36.7558822,-76.063541,convenience,7-Eleven,
+way/402497019,36.7774354,-76.0859377,bank,Fulton Bank,
+way/402497415,36.7811471,-76.0846353,convenience,7-Eleven,
+way/402497987,36.7683762,-76.0887115,sports_centre,Virginia Beach Field House,
+way/402498018,36.7699795,-76.0678542,police,Virginia Beach Sheriff's Office,
+way/402498026,36.7719482,-76.0681801,place_of_worship,Piney Grove Church,
+way/402498985,36.7804257,-76.0821446,place_of_worship,,
+way/402499504,36.7838772,-76.0829379,place_of_worship,New Life Presbyterian Church,
+way/402499510,36.785127,-76.0794577,fuel,BP,
+way/402499533,36.7809456,-76.0843511,fuel,,
+way/402507339,36.8254108,-76.0678957,bank,Bank of Hampton Roads,
+way/402507343,36.8167847,-76.0581037,fire_station,Fire Station #03 - London Bridge,
+way/402508063,36.8288838,-76.0662449,post_office,Virginia Beach Post Office,Mo-Fr 08:30-17:00; Sa 10:00-15:00
+way/402508351,36.8215933,-76.0759323,bank,Navy Federal Credit Union,
+way/402508363,36.8235143,-76.0716907,supermarket,Walmart Supercenter,24/7
+way/402508364,36.8226016,-76.067537,bank,Raising Cane’s,"Su-Th 10:00-01:00, Fr-Sa 10:00-02:00"
+way/402508600,36.8369214,-76.0549097,place_of_worship,,
+way/402511480,36.8127306,-76.0681506,convenience,7-Eleven,
+way/402513487,36.8040814,-76.0772489,place_of_worship,,
+way/402513653,36.7915306,-76.0810008,convenience,7-Eleven,
+way/402513655,36.7917712,-76.0800607,convenience,,
+way/402513666,36.7925534,-76.0803724,fuel,Citgo,
+way/402513988,36.8012533,-76.0862252,convenience,7-Eleven,
+way/402514499,36.8131693,-76.0744257,convenience,,
+way/402515122,36.813179,-76.0741587,fuel,Valero,
+way/402515124,36.8107576,-76.0726174,fuel,BP,
+way/402515369,36.7916775,-76.0807411,fuel,7-Eleven,
+way/402524936,36.7314892,-75.9831918,place_of_worship,Tabernacle United Methodist Church,
+way/402526825,36.8105353,-75.9905153,convenience,7-Eleven,24/7
+way/402526827,36.8100338,-75.9904422,fuel,Citgo,
+way/402526829,36.8107412,-75.9929278,fire_station,Fire Station #12 - Seatack,
+way/402526831,36.8101456,-75.9906849,convenience,Holiday Food Mart,Mo-Sa 07:30-21:00; Su 07:00-21:00
+way/402527168,36.7971433,-75.9978134,supermarket,Oceana Commissary,"Mo-Fr 09:00-21:00; Sa,Su 08:00-21:00"
+way/402527389,36.8106335,-75.9891154,fuel,Shell,
+way/402527513,36.8041653,-75.9987212,convenience,Tally-Ho,
+way/402543414,36.8053577,-76.0286717,fitness_centre,Flight Line Fitness Center,Mo-Th 05:00-20:00; Fr 05:00-19:00; Sa-Su 08:00-16:00
+way/402544270,36.7932251,-75.9981309,place_of_worship,,
+way/402544272,36.7924363,-75.9981428,place_of_worship,Free Will Church,
+way/402544306,36.7995266,-76.0043765,convenience,7-Eleven,24/7
+way/402544629,36.7997841,-76.0042904,fuel,7-Eleven,
+way/402546838,36.7638266,-76.0234648,fire_station,Virginia Beach City Fire and Volunteer Rescue Station 21 General Booth,
+way/402550013,36.7819652,-76.0482066,convenience,,
+way/402550090,36.7821017,-76.0479661,fuel,BP,
+way/402551158,36.7598484,-76.0192543,convenience,7-Eleven,
+way/402551434,36.760383,-76.0205283,place_of_worship,,
+way/402551568,36.7589013,-76.0235647,place_of_worship,Grace Covenant Presbyterian Church,
+way/402552067,36.7579008,-76.0339087,place_of_worship,,
+way/402552479,36.7643663,-76.0219339,library,Princess Anne Library,
+way/402552480,36.7648212,-76.0205509,sports_centre,Princess Anne Recreation Center,"Mo-Th 05:00-21:00; Fr 05:00-20:00; Sa 09:00-17:00; Su 11:00-17:00 || Mo-Fr 06:00+ ""Pool"""
+way/402552491,36.7549622,-76.027659,place_of_worship,Mount Zion Church,
+way/402553962,36.7520595,-76.0090605,fuel,7-Eleven,
+way/402553964,36.7611294,-76.0072051,bank,Bank of America,
+way/402553965,36.7513051,-76.0099459,bank,Bank of Hampton Roads,
+way/402553968,36.7504425,-76.0096701,supermarket,Food Lion,
+way/402555801,36.7602725,-76.0045634,convenience,Pit Stop,
+way/402555806,36.7495474,-76.0053477,school,Saint John the Apostle Catholic School,
+way/402555818,36.7628431,-76.0148952,pharmacy,CVS Pharmacy,24/7
+way/402555819,36.7588965,-76.0129832,place_of_worship,The Church of Jesus Christ of Latter-day Saints,
+way/402555821,36.7629863,-76.0125144,place_of_worship,,
+way/402555831,36.760088,-76.0161657,place_of_worship,Nimmo United Methodist Church,
+way/402555832,36.7588787,-76.0091996,supermarket,Walmart Supercenter,Mo-Su 06:00-23:00
+way/402556662,36.7681229,-76.0145588,fuel,Fuel Express,
+way/402557001,36.7681431,-76.0136239,fuel,,
+way/402557004,36.7673389,-76.0141108,bank,Wells Fargo,
+way/402558383,36.775138,-76.0056534,convenience,,
+way/402560506,36.7752896,-76.0053793,fuel,,
+way/402560718,36.7865874,-75.9995873,bank,ABNB General Booth Branch,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/402560929,36.7867501,-76.0048192,place_of_worship,Oean Lakes Church,
+way/402561727,36.7788086,-76.004839,place_of_worship,,
+way/402561791,36.7856993,-76.0002006,fuel,,
+way/402561849,36.7857436,-76.0005225,convenience,,
+way/402565681,36.7827809,-75.9631971,fuel,NEX Gas Station,
+way/402565742,36.7833092,-75.960697,bank,Navy Federal Credit Union,
+way/402567529,36.722978,-75.9368054,place_of_worship,,
+way/402567631,36.7222716,-75.9365038,place_of_worship,,
+way/402568301,36.7458017,-75.9446782,supermarket,Sandbridge Market,
+way/402568329,36.7462557,-75.946045,place_of_worship,Saint Simon's by the Sea,
+way/402568331,36.7454666,-75.9456426,fire_station,Sandbridge Fire And Rescue Station Number 17,
+way/402569533,36.6035227,-76.0267837,fire_station,Fire Station #06 - Creeds,
+way/402569995,36.6045744,-76.0164258,place_of_worship,,
+way/402570158,36.6093868,-76.0354971,place_of_worship,Piney Grove Church,
+way/402570182,36.6145324,-76.0355045,place_of_worship,Oak Grove Baptist Church,
+way/402570243,36.6362669,-76.0382518,library,Creeds Senior Center & Library/Police/Resource Center,Mo-Th 09:00-18:00; Fr-Sa 09:00-17:00; Su off
+way/402570301,36.5878465,-76.0194747,place_of_worship,Bethel Church,
+way/402570422,36.6048086,-76.0269932,convenience,R-Co,
+way/402570635,36.6044016,-76.0273019,convenience,Beer Shack,
+way/402570956,36.6045791,-76.0268018,fuel,Sunoco,
+way/402572029,36.7204791,-76.019571,convenience,7-Eleven,
+way/402572134,36.6802371,-76.0181727,place_of_worship,,
+way/402572297,36.6967899,-75.998273,place_of_worship,,
+way/402572392,36.6724473,-76.0004909,place_of_worship,Charity United Methodist Church,
+way/402573331,36.7203533,-76.0192397,fuel,7-Eleven,
+way/402573932,36.66655,-76.0287204,place_of_worship,,
+way/402573937,36.68285,-76.0226433,place_of_worship,Asbury Methodist Church,
+way/402574155,36.5696569,-76.0833145,place_of_worship,,
+way/402574177,36.584038,-76.0852668,fire_station,,
+way/402574236,36.6233811,-76.1003565,place_of_worship,Pleasant Valley Church,
+way/402574523,36.5855455,-76.0833817,fire_station,Virginia Beach Fire Station 13,
+way/402574578,36.5577634,-76.073389,place_of_worship,,
+way/402574655,36.5860866,-76.0827664,place_of_worship,,
+way/402651030,36.7805738,-76.1892714,supermarket,Walmart Neighborhood Market,Mo-Su 06:00-24:00
+way/402651318,36.780184,-76.1916509,fuel,Shell,
+way/402651417,36.7794285,-76.1922896,fuel,Wawa,
+way/402651562,36.7798855,-76.1936141,place_of_worship,Bethel Church,
+way/402653035,36.7723381,-76.2029056,place_of_worship,,
+way/402655199,36.7665178,-76.1892177,place_of_worship,,
+way/402655427,36.7801097,-76.1913004,convenience,Shell,
+way/402655486,36.7739458,-76.2034571,sports_centre,,
+way/402658398,36.8013533,-76.1969471,library,Regent University Library,
+way/402659108,36.8012784,-76.2024085,place_of_worship,Level Green Baptist Church,
+way/402659198,36.8147177,-76.2208096,place_of_worship,Saint Andrews Church,
+way/402660319,36.8101689,-76.2022572,convenience,Corner Mart,
+way/402660350,36.8103123,-76.2035884,place_of_worship,,
+way/402661290,36.7973944,-76.2127288,place_of_worship,,
+way/402661334,36.8103697,-76.2162275,supermarket,Food Lion,
+way/402661370,36.8192425,-76.2194529,school,Daniels Christian Academy,
+way/402661602,36.8162102,-76.2072562,place_of_worship,Memorial United Methodist Church,
+way/402661784,36.8172171,-76.2150424,fuel,7-Eleven,
+way/402661793,36.814203,-76.196946,place_of_worship,,
+way/402661837,36.8138192,-76.1985002,place_of_worship,Westwood Hill Baptist Church,
+way/402662007,36.8110433,-76.2046641,convenience,7-Eleven,24/7
+way/402662306,36.8021863,-76.1933873,place_of_worship,,
+way/402662540,36.8103476,-76.2021419,fuel,Marathon,
+way/402662544,36.8194271,-76.22255,fuel,7-Eleven,
+way/402663368,36.8192067,-76.2225734,convenience,7-Eleven,24/7
+way/402663375,36.8116263,-76.2144629,place_of_worship,Mount Sinai Church,
+way/402665950,36.8350163,-76.1668043,place_of_worship,,
+way/402666896,36.8265054,-76.1623544,place_of_worship,Emmanuel Church,
+way/402666984,36.8273085,-76.168065,supermarket,Food Lion,
+way/402666992,36.8282909,-76.1685133,bank,Chase,
+way/402667503,36.8384232,-76.1721799,place_of_worship,,
+way/402667767,36.8315106,-76.1833736,place_of_worship,Carrow Baptist Church,
+way/402668993,36.8398967,-76.1817548,fuel,Arrowhead Gas,
+way/402670747,36.8274289,-76.1593814,fire_station,Kempsville Fire And Rescue Station Number 9,
+way/402670767,36.8356937,-76.1590991,place_of_worship,,
+way/402671304,36.8168315,-76.145708,place_of_worship,The Church of Jesus Christ of Latter-day Saints,
+way/402671988,36.8178409,-76.1468842,place_of_worship,Saint Andrews Untied Methodist,
+way/402673626,36.8145176,-76.188375,fire_station,Fire Station #10 - Providence Road,
+way/402674252,36.8155973,-76.1740733,place_of_worship,,
+way/402674277,36.8159974,-76.1750143,place_of_worship,,
+way/402675406,36.816654,-76.1651789,place_of_worship,Kempsville Presbyterian Church,
+way/402675449,36.8147185,-76.1651895,bank,Truist,
+way/402675455,36.8147365,-76.1924971,place_of_worship,,
+way/402675460,36.8148499,-76.1712182,bank,ABNB Federal Credit Union,
+way/402675465,36.8186656,-76.182804,place_of_worship,,
+way/402675466,36.8179401,-76.1829927,school,Tabernacle Baptist Academy,
+way/402678137,36.8023279,-76.1743833,post_office,Acredale Post Office,Mo-Fr 07:30-17:00; Sa 09:00-13:00
+way/402678191,36.7988757,-76.176596,bank,Bank of America,Mo-Fr 10:00-16:00
+way/402678200,36.8130259,-76.1661055,fuel,7-Eleven,
+way/402678242,36.8128703,-76.1703294,bank,Navy Federal Credit Union,
+way/402678503,36.8145688,-76.1753279,place_of_worship,Hope Lutheran Church,
+way/402678938,36.8006584,-76.180209,bank,Atlantic Union Bank,Mo-Fr 09:00-17:00
+way/402679315,36.8052645,-76.1894954,convenience,7-Eleven,
+way/402679390,36.8064718,-76.1922829,place_of_worship,Avalon Hills Baptist Church,
+way/402679468,36.8125669,-76.1664549,bank,Wells Fargo,
+way/402679752,36.8122377,-76.1678457,supermarket,Kroger,Mo-Fr 09:00-20:00;Sa 09:00-18:00;Su 10:00-17:00
+way/402679883,36.8051225,-76.1796539,place_of_worship,,
+way/402680177,36.8014913,-76.1801442,place_of_worship,New Life Church- Kempsville Campus,
+way/402681912,36.8003484,-76.1867116,place_of_worship,,
+way/402682014,36.796087,-76.1762203,bank,Truist,
+way/402682074,36.7933439,-76.1788425,place_of_worship,,
+way/402682871,36.7972499,-76.1779196,sports_centre,,
+way/402683051,36.8019912,-76.1851237,school,New Light Baptist School of Excellence,
+way/402683595,36.7888077,-76.1974857,place_of_worship,Azalea Garden Church,
+way/402683707,36.7863016,-76.1944005,post_office,Virginia Beach Post Office,
+way/402684898,36.7951019,-76.1747928,supermarket,ALDI,Mo-Su 08:00-21:00
+way/402686495,36.7952706,-76.164128,bank,Chartway Federal Credit Union,
+way/402686496,36.794568,-76.1650164,supermarket,Food Lion,
+way/402686502,36.7937923,-76.1691846,marketplace,Harris Teeter,Mo-Su 06:00-22:00
+way/402686626,36.7913912,-76.1681501,place_of_worship,,
+way/402688009,36.7945652,-76.1675103,fuel,Wawa,
+way/402688013,36.7944659,-76.1678963,convenience,Wawa,24/7
+way/402688019,36.7902382,-76.1798786,place_of_worship,,
+way/402688160,36.7965346,-76.1748128,convenience,7-Eleven,
+way/402688165,36.7901313,-76.1666435,place_of_worship,Old Saint Matthews Church,
+way/402694000,36.7566822,-76.1351018,place_of_worship,,
+way/402694619,36.7690993,-76.1514637,place_of_worship,Mount Bethel Church,
+way/402694777,36.7652364,-76.1482735,place_of_worship,,
+way/402694828,36.7546023,-76.132077,place_of_worship,,
+way/402697647,36.7676013,-76.1235317,convenience,7-Eleven,
+way/402697963,36.7642107,-76.1191793,place_of_worship,Salem Acres Church,
+way/402699320,36.767905,-76.1236124,fuel,,
+way/402699441,36.7605004,-76.115421,place_of_worship,,
+way/402705779,36.7735831,-76.1241152,place_of_worship,,
+way/402705790,36.7709338,-76.1238926,place_of_worship,,
+way/402708701,36.7862334,-76.1490929,fire_station,Fire Station #19 - Stumpy Lake,
+way/402719188,36.7952934,-76.1179312,convenience,Shell,
+way/402720068,36.801344,-76.1124095,convenience,Market Express,Mo-Su 06:30-23:00
+way/402720123,36.7915938,-76.1094387,bank,ABNB Credit Union,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/402720771,36.7950942,-76.1176701,fuel,Shell,
+way/402724372,36.7899737,-76.1242319,fuel,7-Eleven,
+way/402724375,36.7898576,-76.1245886,convenience,7-Eleven,
+way/402724378,36.7905905,-76.1223069,bank,Bank of America,
+way/402725255,36.8061448,-76.1179141,convenience,7-Eleven,24/7
+way/402726516,36.8022608,-76.1308521,place_of_worship,,
+way/402726537,36.8037816,-76.1318643,convenience,7-Eleven,24/7
+way/402726833,36.794044,-76.1227785,supermarket,Walmart Supercenter,Mo-Su 06:00-23:00
+way/402726910,36.8036039,-76.1321812,fuel,7-Eleven,
+way/402731698,36.8081061,-76.1535824,place_of_worship,,
+way/402732006,36.8075038,-76.1549473,place_of_worship,,
+way/402734685,36.8098278,-76.1569152,school,Bellamy Manor School,
+way/402735355,36.8052153,-76.1687377,post_office,Acredale Station Virginia Beach Post Office,
+way/402735484,36.8074798,-76.15601,place_of_worship,,
+way/402737740,36.8196554,-76.1505064,place_of_worship,,
+way/402737754,36.8213128,-76.1511381,place_of_worship,,
+way/402738158,36.8137697,-76.1623207,place_of_worship,Suburban Church,
+way/402738193,36.8214518,-76.1608305,place_of_worship,Rock Church,
+way/402738383,36.8142959,-76.1521247,community_centre,Kempsville Recreation Center,
+way/402738468,36.8152949,-76.1634659,library,Kempsville Library,
+way/402750760,36.786098,-76.095679,library,Joint-Use Library,
+way/402753520,36.7937625,-76.092539,place_of_worship,,
+way/402755449,36.8061742,-76.0998253,place_of_worship,Kingdom Cathedral,
+way/402755651,36.7923154,-76.0827547,supermarket,Walmart Neighborhood Market,Mo-Su 06:00-24:00
+way/402756090,36.7949276,-76.1042551,fire_station,Fire Station #18 - Green Run,
+way/402756101,36.7957221,-76.0992146,fuel,BP,
+way/402756114,36.7957786,-76.1023389,convenience,Wawa,24/7
+way/402756148,36.7950406,-76.1078729,fuel,7-Eleven,
+way/402756155,36.7955027,-76.1022095,fuel,Wawa,
+way/403002817,36.8556165,-75.9785299,sports_centre,,
+way/403002819,36.8559227,-75.9792362,sports_centre,,
+way/403002840,36.8488016,-75.9848694,fuel,Shell,
+way/406522679,36.8463308,-76.1259496,school,Princess Anne High School,
+way/406522709,36.8443222,-76.1250404,school,,
+way/406851137,36.800788,-76.1933834,place_of_worship,Shaw Chapel,
+way/407238733,36.8104821,-75.9890831,convenience,,
+way/407409069,36.8846272,-76.1825643,fast_food,Dunkin',Mo-Su 05:00-19:00
+way/407409072,36.8844464,-76.1829798,convenience,7-Eleven,24/7
+way/407409132,36.8841864,-76.1829832,fuel,Exxon,
+way/407411178,36.8709119,-76.1727239,pharmacy,,
+way/407411601,36.8856049,-76.1792331,convenience,Wawa,24/7
+way/407411634,36.8823328,-76.1834899,convenience,BP Shop,Mo-Su 06:00-23:00
+way/407411636,36.8833756,-76.1862081,convenience,Big Charlie's Truck Plaza,24/7
+way/407411662,36.8819733,-76.1864876,fuel,Citgo,
+way/407411740,36.8722083,-76.1820536,place_of_worship,Ebenezer Church,
+way/407411862,36.8830637,-76.1859492,fuel,Big Charlie's Truck Plaza,
+way/407411958,36.8858008,-76.1795389,fuel,Wawa,
+way/407412409,36.86885,-76.1780546,place_of_worship,,
+way/407412555,36.8684758,-76.1798484,place_of_worship,,
+way/407418528,36.8741574,-76.134957,bank,Bank of America,Mo-Fr 10:00-16:00
+way/407420022,36.8578471,-76.1453321,place_of_worship,Christ Church,
+way/407420053,36.8636281,-76.1326385,bank,Atlantic Union Bank,Mo-Fr 09:00-17:00
+way/407421286,36.8732435,-76.1389888,place_of_worship,Haygood Church,
+way/407422350,36.8463031,-76.1567013,convenience,7-Eleven,24/7
+way/407422378,36.8487626,-76.1579107,place_of_worship,,
+way/407422481,36.8475228,-76.166409,place_of_worship,St. Gregory the Great Catholic Church,
+way/407422879,36.8475849,-76.1709666,place_of_worship,Gateway Free Will Baptist Church,
+way/407427299,36.7522604,-76.0088593,convenience,7-Eleven,
+way/407446883,36.7981018,-76.1008422,school,Rosemont Elementary School,
+way/407449845,36.793852,-76.1191731,fuel,Exxon,
+way/407449846,36.7974236,-76.123489,school,Parkway Elementary,
+way/407449859,36.8016,-76.1122377,fuel,CITGO,
+way/407449860,36.7941103,-76.1190699,convenience,,
+way/407481108,36.8696888,-76.1700106,supermarket,Food Lion,
+way/407481162,36.862104,-76.1662619,place_of_worship,New Saint John AME,
+way/407481687,36.8646491,-76.1585316,community_centre,Williams Farm Recreation Center,Mo-Th 05:00-21:00; Fr 05:00-20:00; Sa 09:00-17:00; Su 11:00-17:00
+way/407483519,36.8717192,-76.1712443,convenience,Citgo,
+way/407483535,36.8717372,-76.1714817,fuel,Citgo,
+way/407484360,36.8897322,-76.1753939,place_of_worship,Unity Church of Tidewater,
+way/407484391,36.8875534,-76.177734,place_of_worship,Missions To Military - Norfolk and Virginia Beach Center,
+way/407485723,36.9016334,-76.1767933,place_of_worship,Diamond Springs Christian Church,
+way/407485876,36.8963032,-76.1790307,place_of_worship,Diamond Springs Baptist Church,
+way/407509664,36.8491912,-76.033031,convenience,,
+way/407636451,36.9034924,-76.1318451,fuel,Kroger Fuel,
+way/408760417,36.864576,-76.0431712,place_of_worship,Wave Church,
+way/409101178,36.6370772,-76.0372032,school,Creeds Elementary School,
+way/409304155,36.7402884,-76.0736874,school,North Landing Elementary School,
+way/409636097,36.8427972,-76.0879967,fuel,Kroger Fuel Center,
+way/409655599,36.8575,-76.1390788,school,Bayside Sixth Grade Campus,
+way/409655600,36.8635729,-76.1557778,school,Diamond Springs Elementary School,
+way/409655601,36.8572272,-76.1366141,school,Pembroke Elementary School,
+way/409675065,36.7682661,-76.0139051,convenience,Pit Stop,
+way/410143982,36.7712726,-76.1091495,sports_centre,Hampton Roads Soccer Complex,
+way/410144069,36.7805725,-76.1012387,school,Landstown High School,
+way/410144070,36.7782204,-76.104759,school,,
+way/410150387,36.8225616,-76.1596543,school,Kempsville Elementary School,
+way/410150388,36.8201543,-76.1568692,school,Kempsville High School,
+way/410150389,36.816913,-76.1424758,school,Kempsville Meadows Elementary School,
+way/410150390,36.8102436,-76.1543938,school,Providence Elementary School,
+way/410150393,36.8200916,-76.1611064,school,Rock Church Academy,
+way/410701571,36.8470019,-76.0821246,convenience,7-Eleven,
+way/410701575,36.7857442,-76.1455275,school,Salem Middle School,
+way/410709834,36.89515,-76.1794993,school,Bayside Elementary School,
+way/410730736,36.8125182,-76.2050407,fuel,7-Eleven,
+way/410730737,36.8124902,-76.2047355,convenience,7-Eleven,24/7
+way/410730741,36.8109181,-76.2016312,fuel,Exxon,
+way/410733242,36.8186964,-76.220148,fuel,Sunoco,
+way/412444507,36.7639839,-76.0997919,sports_centre,Princess Anne Athletic Complex,
+way/414551499,36.8130828,-76.16633,convenience,7-Eleven,
+way/414571792,36.7500804,-76.0063263,place_of_worship,Saint John the Apostle Catholic Church,
+way/445451204,36.8527324,-75.97779,sports_centre,iFLY,
+way/456697634,36.8794923,-76.0416293,fitness_centre,Bella Dance,
+way/468166081,36.6210491,-75.9004038,convenience,Park Office / Visitor Center,
+way/469456466,36.827211,-76.1504046,fitness_centre,Tennis Courts,
+way/553685835,36.8149652,-76.1112892,fuel,Kroger,
+way/624093302,36.8096516,-76.1333003,school,Bishop Sullivan Catholic High School,
+way/624126254,36.8867089,-76.0532769,school,Frank W Cox High School,
+way/624797401,36.8421625,-76.1403349,supermarket,Wegmans,Mo-Su 06:00-24:00
+way/628175903,36.8299105,-76.1450697,place_of_worship,The Church of Jesus Christ of Latter-day Saints,
+way/682989501,36.8172624,-76.2153629,convenience,7-Eleven,24/7
+way/682989503,36.8124063,-76.2079967,supermarket,Lidl,Mo-Su 08:00-21:00
+way/683388189,36.8785929,-76.0425793,convenience,Quik Mart,Mo-Su 06:00-21:00
+way/683388190,36.8786528,-76.0424067,fuel,CITGO,
+way/684246640,36.8631175,-76.0864618,school,Kings Grant Day School,
+way/693301687,36.805715,-76.0783493,place_of_worship,,
+way/729511819,36.7977548,-76.0825774,supermarket,Lidl,Mo-Su 08:00-22:00
+way/729512768,36.7780323,-76.0024427,supermarket,Lidl,Mo-Su 08:00-22:00
+way/747368184,36.815326,-76.1676419,supermarket,Food Lion,
+way/747831573,36.8738156,-76.1363261,fitness_centre,Anytime Fitness,24/7
+way/837281663,36.8122123,-76.1671558,bank,Dollar Bank,
+way/837281691,36.8140128,-76.1704503,fuel,Kroger,
+way/837293735,36.7779647,-76.1901386,supermarket,Food Lion,
+way/843751958,36.8126865,-76.155416,school,Kempsville Middle School,
+way/850317369,36.7647417,-76.0942859,sports_centre,Princess Anne Athletic Complex,
+way/850568283,36.7715223,-76.0951984,sports_centre,Princess Anne Family YMCA,
+way/851907205,36.8419081,-76.0842516,bank,ABNB Credit Union,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/851907209,36.8420541,-76.0553944,fuel,7-Eleven,
+way/851948907,36.8180745,-76.0780015,school,Plaza Annex,
+way/851976107,36.8168666,-76.0673002,bank,Bank of America,
+way/856582371,36.7704508,-76.1883918,fuel,Royal Farms,
+way/856582372,36.7707523,-76.1885252,convenience,Royal Farms,
+way/882072361,36.7604279,-76.0048692,fuel,,
+way/882079628,36.7518819,-76.0105463,fuel,Harris Teeter Fuel,
+way/882079632,36.749874,-76.0105419,fitness_centre,Anytime Fitness,24/7
+way/882079635,36.8435015,-75.9901854,sports_centre,Virginia Beach Sports Center,
+way/882624641,36.8431273,-76.0201415,convenience,7-Eleven,24/7
+way/882624642,36.84281,-76.0201778,fuel,7-Eleven,
+way/883887646,36.8304976,-76.094836,convenience,7-Eleven,24/7
+way/883887647,36.8302636,-76.094898,fuel,7-Eleven,
+way/883887655,36.8116854,-76.0941483,supermarket,Aldi,Mo-Su 08:00-21:00
+way/883914159,36.8274405,-76.0784802,convenience,,
+way/883914160,36.8273781,-76.0781842,fuel,,
+way/883914210,36.8478046,-76.0912791,school,Sunnybrook Day School,
+way/883970331,36.8013592,-76.1772921,fitness_centre,Planet Fitness,Mo 05:00-00:00; Tu-Th 00:00-00:00; Fr 00:00-22:00; Fr-Sa 07:00-19:00
+way/885325683,36.8725313,-76.1360924,supermarket,Harris Teeter,Mo-Su 06:00-22:00
+way/885325687,36.8743799,-76.1364387,fuel,Harris Teeter Fuel,
+way/885325724,36.8947303,-76.1421449,fuel,7-Eleven,
+way/885975408,36.7949925,-76.1075848,convenience,7-Eleven,24/7
+way/942740855,36.8565379,-76.0268802,supermarket,Aldi,Mo-Su 08:00-21:00
+way/1024642583,36.7599599,-76.01892,fuel,7-Eleven,
+way/1108072991,36.8148245,-76.1082531,fitness_centre,Planet Fitness,24/7
+way/1112907974,36.7793217,-76.1926887,convenience,Wawa,24/7
+way/1124783391,36.8146553,-76.1626055,police,Virginia Beach Police Department Fourth Precinct,
+way/1219864978,36.8704004,-76.1483267,convenience,7-Eleven,
+way/1255227887,36.8733891,-76.1327187,supermarket,Lidl,Mo-Su 08:00-21:00
+way/1260444855,36.8603866,-76.1754731,convenience,,
+way/1260444857,36.8602106,-76.1752704,fuel,,
+way/1314925242,36.7501455,-76.0572547,townhall,Virginia Beach City Hall,
+way/1322338404,36.7939887,-75.9941442,convenience,Wawa,24/7
+way/1322338405,36.7941228,-75.994476,fuel,Wawa,
+way/1339755774,36.7535633,-76.0602136,library,Wahab Public Law Library,Mo-Fr 08:30-16:30; Sa-Su off
+way/1348623891,36.8541321,-75.9948054,convenience,,
+way/1348623892,36.8543872,-75.9948917,fuel,,
+way/1353775774,36.8419246,-76.1865624,fuel,7-Eleven,
+way/1353775775,36.8419967,-76.1869019,convenience,7-Eleven,
+way/1355816810,36.8102949,-76.1999813,convenience,BP Shop,Mo-Su 07:00-22:00
+way/1358420431,36.8440046,-76.1390791,bank,Dollar Bank,Mo-Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-13:00
+way/1377077573,36.8421712,-76.0823715,bank,BayPort Credit Union,Mo-Th 09:00-17:30; Fr 09:00-18:00
+way/1424485489,36.8840238,-76.1886461,fire_station,New Burton Station Fire Station,
+way/1518533960,36.7605308,-76.0175747,convenience,Royal Farms,24/7
+way/1549336517,36.753763,-76.0649289,fuel,Harris Teeter Fuel Center,
+relation/2619212,36.766208,-76.0183475,school,Strawbridge Elementary School,
+relation/6041387,36.8635206,-75.9810509,place_of_worship,First Presbyterian Church,
+relation/6041388,36.8674659,-75.9823143,place_of_worship,Galilee Church,
+relation/6090723,36.8442991,-76.1258572,place_of_worship,Thalia Lynn Baptist Church,
+relation/6102346,36.8525922,-76.0013434,school,Norfolk Christian School - Virginia Beach Campus,
+relation/6102347,36.8445404,-76.0212433,place_of_worship,Scott Memorial United Methodist Church,
+relation/6142727,36.8234056,-76.219893,place_of_worship,Saint Mathews Church,
+relation/6180357,36.8057935,-76.1683106,place_of_worship,Community Church,
+relation/6730455,36.8462409,-76.1215905,school,Thalia Elementary School,
+relation/7485098,36.8671185,-76.1283829,place_of_worship,Old Donation Church,
+relation/11674055,36.842431,-76.0674866,place_of_worship,Foundry United Methodist Church,
+relation/11674543,36.8437291,-76.1166151,library,Meyera E. Oberndorf Central Library,"Mo-Th 10:00-20:00; Fr,Sa 10:00-17:00"
+relation/13732541,36.8226366,-76.1260139,fuel,Wawa,
+relation/13825469,36.8538679,-76.1541296,place_of_worship,Aragona Church of Christ,
+relation/14020613,36.7572663,-76.0507279,place_of_worship,Saint Johns Church,
+relation/18635439,36.8101418,-76.2001159,fuel,bp,
+relation/18675787,36.847077,-76.1656591,school,Saint Gregory the Great Catholic School,
+relation/19174343,36.8408767,-76.056135,fuel,Wawa,
+relation/19516130,36.8826826,-76.1836686,fuel,BP,
+relation/20018132,36.7532379,-76.0131897,school,Three Oaks Elementary School,

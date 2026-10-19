@@ -1,0 +1,9 @@
+.venv/
+cache/
+data/raw/
+data/VBOHCAR.xlsx
+paper/*.aux
+paper/*.log
+paper/*.out
+__pycache__/
+.DS_Store

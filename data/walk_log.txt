@@ -1,0 +1,2 @@
+walk graph: 52708 nodes 71677 edges
+15857 OHCA-site pairs within 1000 m

@@ -1,0 +1,352 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=1.4em}
+\graphicspath{{../figures/}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\captionsetup{font=small,labelfont=bf}
+\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.07}\renewcommand{\floatpagefraction}{0.75}
+
+\title{\textbf{Where Should the Defibrillators Go?}\\[0.3em]
+\large Survival-Based, Opening-Hours-Aware and Fairness-Constrained AED Placement\\ from Open Data in Virginia Beach}
+\author{Aryan Padarthi\\ \small EurekaDev 2026 --- Research Track, Math \& Physics}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Out-of-hospital cardiac arrest (OHCA) kills roughly nine in ten of the 137{,}000 Americans it strikes each year, and every minute without defibrillation lowers the chance of survival. Public automated external defibrillators (AEDs) can close that gap, but only if they are placed where arrests happen, \emph{and} can be reached when they happen. Using a public data set of 2{,}706 cardiac arrests in Virginia Beach, Virginia (2017--2019), a 52{,}708-node walking network, 929 candidate host sites with opening hours from OpenStreetMap, and the CDC Social Vulnerability Index, we formulate AED placement as a survival-maximizing facility-location problem, prove that its objective is monotone submodular (so a greedy algorithm is guaranteed $\ge 63\%$ of optimal), and solve it exactly as a mixed-integer program. In five-fold temporal cross-validation, our model achieves 21--64\% more out-of-sample expected survival gain than the standard maximal covering model for 25--200 AEDs, and the advantage holds in all 24 sensitivity scenarios. We find that planning as if AEDs were reachable 24/7 overstates their real benefit by 34--158\%, and that placing the same AEDs in outdoor 24/7 cabinets recovers 23--49\% more benefit. We also test, and reject, the hypothesis that AEDs should be weighted toward places where EMS was historically slow: location explains only 7\% of the variation in response time. Finally, a fairness constraint across vulnerability quartiles costs under 5\% of total benefit, and we prove a simple bound showing that, in Virginia Beach, full parity is unreachable with building-hosted AEDs alone.
+\end{abstract}
+
+\section{Background \& Problem Definition}
+
+\paragraph{The problem.} When the heart stops, the brain begins to die within minutes. In the United States, emergency medical services (EMS) treated about 137{,}000 non-traumatic OHCAs reported to the CARES registry in 2024; only 10.5\% of those patients survived to hospital discharge \cite{cares2024}. The treatment that matters most for the most survivable arrests---those with a shockable rhythm such as ventricular fibrillation---is an electric shock delivered quickly. Survival falls steeply with every minute of delay: in King County, Washington, predicted survival fell by 2.3 percentage points for every minute until CPR and a further 1.1 points for every minute until defibrillation \cite{larsen1993}.
+
+\paragraph{Why AEDs.} An AED is a shoebox-sized device that any bystander can use; it talks the user through each step. When a bystander shocks a patient before EMS arrives, survival roughly doubles: 38\% versus 7\% overall in the Resuscitation Outcomes Consortium \cite{weisfeldt2010}, and 66.5\% versus 43.0\% for observed public shockable arrests (adjusted odds ratio 2.62) \cite{pollack2018}. Yet a bystander applies an AED in only 12.6\% of public arrests \cite{cares2024}. A large part of the reason is simple geography and timing: the nearest AED is too far away, or it is locked inside a building that is closed \cite{hansen2013,karlsson2019,deakin2018}.
+
+\paragraph{Why Virginia Beach.} Virginia Beach is a city of about 460{,}000 people that mixes dense urban corridors with low-density suburbs and rural land. It is also one of very few U.S. cities whose incident-level cardiac-arrest records, including the EMS response time for every call, are publicly available \cite{custodio2022}. In these data, the median time from the 911 call to the first unit's arrival is 7.2 minutes, and 41\% of patients waited longer than 8 minutes (Figure~\ref{fig:rt}). Every one of those minutes is a minute a nearby AED could have saved.
+
+\paragraph{Research questions.} Given a budget of $p$ AEDs and a list of public buildings that could host them:
+\begin{enumerate}
+\item[\textbf{RQ1}] Does choosing sites to maximize \emph{expected survival} (rather than the number of arrests within a fixed radius) produce more benefit on future, unseen arrests?
+\item[\textbf{RQ2}] How much does ignoring building opening hours overstate an AED plan's benefit, and how much would 24/7 outdoor cabinets recover?
+\item[\textbf{RQ3}] Should AEDs be steered toward places where EMS has historically been slow?
+\item[\textbf{RQ4}] What does it cost to guarantee that every level of social vulnerability receives a fair share of the benefit, and is full fairness achievable at all?
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\linewidth]{fig2_response_times.png}\hfill
+\includegraphics[width=0.48\linewidth]{fig1_survival.png}
+\caption{\textbf{Left:} first-unit EMS response times for the 2{,}332 Virginia Beach arrests with a recorded time. \textbf{Right:} the two published survival curves used in this study \cite{valenzuela1997,demaio2003,erkut2008}. A shock at the median Virginia Beach EMS time (dotted line) gives far lower survival than a shock in the first few minutes.}
+\label{fig:rt}
+\label{fig:survival}
+\end{figure}
+
+\section{Literature Review}
+
+\paragraph{Survival and time.} The link between time and survival is among the best-established facts in resuscitation science. Larsen et al.\ fit a linear model to 1{,}667 witnessed ventricular-fibrillation arrests and found that predicted survival falls from 67\% by 2.3, 1.1 and 2.1 percentage points for every minute of delay to CPR, defibrillation and advanced life support, respectively \cite{larsen1993}. Valenzuela et al.\ replaced this with a logistic model that depends only on the collapse-to-CPR and collapse-to-shock intervals and generalizes across U.S. cities \cite{valenzuela1997}. De Maio et al.\ fit a similar curve to EMS response time for all treated arrests in Ontario \cite{demaio2003}. Erkut, Ingolfsson and Erdo\u{g}an showed that replacing yes/no ``coverage'' with such survival functions changes, and improves, where ambulances should be based \cite{erkut2008}; we use their published forms of both curves.
+
+\paragraph{Bystander AEDs work, but are rarely used.} Weisfeldt et al.\ found that an AED was applied before EMS arrival in only 2.1\% of 13{,}769 arrests, but that its use raised survival (adjusted OR 1.75) \cite{weisfeldt2010}. Pollack et al.\ found that the benefit of a bystander shock ``increased progressively as EMS response time became longer'' \cite{pollack2018}, and Hindborg et al.\ found the clearest survival benefit when EMS took 7--9 minutes \cite{hindborg2025}. These findings motivate RQ3.
+
+\paragraph{Access in space and time.} Copenhagen data showed that 61.8\% of public arrests happen in the evening, at night or on weekends, while only 9.1\% of AEDs were accessible 24/7; limited hours cut coverage by 53.4\% during those periods \cite{hansen2013}. When the nearest AED was accessible, 30-day survival was 28.8\% versus 16.4\% when it was not \cite{karlsson2019}. In England, only 34.3\% of AEDs were available at night \cite{deakin2018}. Walking routes matter too: switching from straight-line to route distance cut 100-metre coverage from 24.2\% to 9.5\% in Copenhagen \cite{karlsson2021}.
+
+\paragraph{Optimization models.} Toregas et al.\ introduced the location set-covering problem \cite{toregas1971} and Church and ReVelle the \emph{maximal covering location problem} (MCLP): place $p$ facilities to cover as much demand as possible within a fixed distance \cite{church1974}. A 2025 scoping review of 43 AED-placement studies found the MCLP to be the most common model \cite{petravic2025}. Chan et al.\ first applied optimization to AED siting in Toronto, using historical arrests and a 100-metre radius \cite{chan2013,chan2016}. Sun et al.\ added time-of-day availability and found that assuming 24/7 access overstated coverage by 21.5\% \cite{sun2016}; an \emph{in silico} trial in Copenhagen found optimized placement covered 24.2\% of arrests versus 15.8\% for guideline-based placement \cite{sun2020}. Siddiq et al.\ studied how the coverage radius changes results \cite{siddiq2013}. Pourghaderi et al.\ replaced coverage with a survival-maximizing objective in Singapore \cite{pourghaderi2021}, and Buter et al.\ used distance-decaying ``gradual'' coverage with greedy heuristics \cite{buter2024}. Other studies examined outdoor and landmark-based deployment in Paris \cite{dahan2016}, hotspot relocation in Switzerland \cite{aeby2021}, and cost-effectiveness in England \cite{brown2025}.
+
+\paragraph{Equity.} Bystander CPR is far less likely in low-income Black neighborhoods (OR 0.49) \cite{sasson2012}, and both lay AED use and survival fall as the share of Black residents rises \cite{starks2017}. In England, arrests are concentrated in deprived areas while AEDs are concentrated in affluent ones \cite{brown2025}. Leung et al.\ showed that optimizing for coverage already shifted AEDs toward deprived Scottish neighborhoods \cite{leung2021}, but no AED study we found imposes an explicit fairness constraint or reports its cost. Bertsimas, Farias and Trichakis define the \emph{price of fairness}: the fraction of total benefit given up to achieve a fair allocation \cite{bertsimas2011}.
+
+\paragraph{Gap.} To our knowledge, no prior study (i) tests whether an arrest's own observed EMS response time should weight AED demand, (ii) imposes and prices a fairness constraint by CDC Social Vulnerability Index (SVI) quartile \cite{flanagan2011}, or (iii) combines survival-based scoring, real walking routes and opening hours on a public U.S. city data set with temporal cross-validation.
+
+\section{Proposed Solution / Theoretical Framework}
+
+\subsection{From coverage to expected survival}
+Let $I$ be the set of historical arrests and $J$ the candidate host sites. For arrest $i$ let $r_i$ be the EMS response time (minutes), $t_i$ the time of the 911 call, and $d_{ij}$ the walking distance from the arrest to site $j$. Let $a_j(t)\in\{0,1\}$ indicate whether site $j$ is open at time $t$.
+
+\paragraph{Timeline.} Measured in minutes from collapse, the 911 call is placed after a delay $c$. Without an AED, CPR begins when EMS arrives, at $c+r_i$, and the first shock follows $\delta$ minutes later. With an AED at distance $d_{ij}$, a bystander walks there and back at speed $v$ and needs $\sigma$ minutes to apply the pads, so the AED is ready at
+\[
+\tau_{ij} = c + \frac{2d_{ij}}{60\,v} + \sigma .
+\]
+Whichever comes first, AED or EMS, starts the treatment.
+
+\paragraph{Survival gain.} Using Valenzuela's logistic model \cite{valenzuela1997}, as reproduced by \cite{erkut2008},
+\[
+S(T_{\mathrm{CPR}},T_{\mathrm{shock}}) = \bigl(1+e^{-0.260+0.106\,T_{\mathrm{CPR}}+0.139\,T_{\mathrm{shock}}}\bigr)^{-1},
+\]
+the gain in survival probability if arrest $i$ is served by site $j$ is
+\[
+g_{ij} = a_j(t_i)\Bigl[S\bigl(\min(\tau_{ij},c+r_i),\ \min(\tau_{ij},c+r_i+\delta)\bigr) - S(c+r_i,\ c+r_i+\delta)\Bigr]
+\]
+when $d_{ij}\le D_{\max}$, and $0$ otherwise. Thus $g_{ij}=0$ automatically if the site is closed, if it is too far, or if EMS would arrive first. Default parameters are listed in Table~\ref{tab:params}.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{llp{8.2cm}}
+\toprule
+Symbol & Default & Meaning and source\\
+\midrule
+$v$ & 1.4 m/s & brisk walking speed of the bystander (tested 1.0 and 2.0)\\
+$\sigma$ & 0.5 min & time to open the cabinet, power on and attach pads\\
+$c$ & 1 min & collapse to 911 call (tested 2 min)\\
+$\delta$ & 1 min & EMS arrival to first shock\\
+$D_{\max}$ & 500 m & one-way walking limit for a retrieval (tested 300 and 800 m)\\
+$S(\cdot)$ & Valenzuela & survival curve \cite{valenzuela1997,erkut2008} (tested De Maio \cite{demaio2003})\\
+\bottomrule
+\end{tabular}
+\caption{Model parameters. Every default is varied in the sensitivity analysis (Section~\ref{sec:sens}).}
+\label{tab:params}
+\end{table}
+
+\subsection{The optimization problem}
+Each arrest uses the best open AED nearby, so the expected survival gain of a set of sites $X\subseteq J$ is
+\[
+F(X) = \sum_{i\in I} \max_{j\in X} g_{ij} \qquad (\text{with } \max_{\emptyset}=0),
+\]
+and we solve $\max\{F(X): |X|\le p\}$. As a mixed-integer linear program, with $y_j=1$ if site $j$ gets an AED and $x_{ij}$ the share of arrest $i$ served by site $j$:
+\[
+\max \sum_{i,j} g_{ij}x_{ij}\quad\text{s.t.}\quad \sum_j y_j\le p,\quad x_{ij}\le y_j,\quad \sum_j x_{ij}\le 1,\quad y_j\in\{0,1\},\ x_{ij}\in[0,1].
+\]
+For fixed $y$, the best $x$ puts all of arrest $i$ on its best open site, so the program computes exactly $\max F$. The classic MCLP is the special case $g_{ij}=1$ if $d_{ij}\le 100$\,m and $0$ otherwise, with every site assumed always open.
+
+\subsection{A guarantee for the greedy algorithm}
+\begin{definition}
+A set function $F$ is \emph{monotone} if $F(A)\le F(B)$ whenever $A\subseteq B$, and \emph{submodular} if adding a site helps a small set at least as much as a large one: $F(A\cup\{k\})-F(A)\ \ge\ F(B\cup\{k\})-F(B)$ for all $A\subseteq B$ and $k\notin B$.
+\end{definition}
+
+\begin{theorem}
+$F$ is monotone and submodular with $F(\emptyset)=0$. Hence the greedy algorithm, which repeatedly adds the site with the largest marginal gain, returns a set $X_G$ with $F(X_G)\ge\bigl(1-(1-\tfrac1p)^p\bigr)\,\mathrm{OPT}\ge(1-\tfrac1e)\,\mathrm{OPT}\approx 0.632\,\mathrm{OPT}$.
+\end{theorem}
+\begin{proof}
+Write $F=\sum_i f_i$ with $f_i(X)=\max_{j\in X} g_{ij}$, where all $g_{ij}\ge 0$. Monotonicity: enlarging $X$ can only raise a maximum. Submodularity: fix $A\subseteq B$ and $k\notin B$, and let $m_A=f_i(A)\le m_B=f_i(B)$. Adding $k$ changes $f_i$ by $\max(0,g_{ik}-m_A)$ for $A$ and by $\max(0,g_{ik}-m_B)$ for $B$. Since $m_A\le m_B$, the first is at least the second. A sum of monotone submodular functions is monotone submodular, so $F$ is too. The approximation ratio is the theorem of Nemhauser, Wolsey and Fisher \cite{nemhauser1978}. Note that opening hours enter only through $g_{ij}$ (which is $0$ when a site is closed), so the guarantee also holds for the hours-aware model.
+\end{proof}
+
+In practice, greedy matched the exact optimum at every budget we tested ($p=10$ to $200$), so the bound is conservative here. We use greedy's ordered site list in the interactive prototype (Section~\ref{sec:proto}), since it naturally answers ``which AED should the city buy next?''.
+
+\subsection{Fairness and a feasibility bound}
+Let $Q_1,\dots,Q_4$ be the arrests in each SVI quartile of census tracts ($Q_4$ most vulnerable). For the unconstrained optimum $X^\star$, let $T=F(X^\star)/|I|$ be its citywide average gain per arrest. A plan is \emph{$\varphi$-fair} if every quartile receives at least a fraction $\varphi$ of that average:
+\[
+\frac{1}{|Q_q|}\sum_{i\in Q_q}\max_{j\in X}g_{ij}\ \ge\ \varphi\,T\qquad\text{for } q=1,\dots,4.
+\]
+These are linear constraints in the MILP. The \emph{price of fairness} is $1-F(X_\varphi)/F(X^\star)$ \cite{bertsimas2011}. We use a fixed target $T$ rather than the plan's own average: otherwise, the solver could appear fairer by ``declining'' to use benefit in well-served areas, which is not how real AEDs work.
+
+\begin{proposition}
+Let $C_q=\frac{1}{|Q_q|}\sum_{i\in Q_q}\max_{j\in J}g_{ij}$ be the most any plan could give quartile $q$, with an AED at \emph{every} candidate site. Then a $\varphi$-fair plan exists only if $\varphi\le \min_q C_q/T$, no matter how many AEDs are available.
+\end{proposition}
+\begin{proof}
+For any $X\subseteq J$, $\max_{j\in X} g_{ij}\le\max_{j\in J} g_{ij}$, so quartile $q$ receives at most $C_q$. Fairness requires this to be at least $\varphi T$.
+\end{proof}
+The bound is a simple statement, but it has a clear policy meaning: if a neighborhood simply has few buildings that can host an AED, no placement plan can make it equal, and other tools (outdoor street cabinets, drones, volunteer-responder apps) are needed.
+
+\section{Experimental Design \& Implementation}
+
+\subsection{Data}
+\begin{itemize}
+\item \textbf{Cardiac arrests:} all 2{,}706 OHCA dispatches in Virginia Beach from 1 January 2017 to 30 June 2019, with call time, location (rounded to the block) and first-unit response time \cite{custodio2022}. 373 records list a response time of exactly 0 and one lists 128 minutes; we treat these as missing and impute them from a linear fit on road distance to the nearest of the city's 40 first-responder stations (fit on the 2{,}332 valid records; $r=0.21$). We repeat all results with these records removed.
+\item \textbf{Candidate sites:} 929 public places from OpenStreetMap (Overpass API): places of worship (218), convenience stores (134), fuel stations (128), schools (120), banks (72), supermarkets (70), fitness and sports centres (77), fire and police stations (38), pharmacies (27), post offices (25), libraries (12) and others.
+\item \textbf{Opening hours:} 209 sites have machine-readable OpenStreetMap hours; for the rest we assume typical hours by category (e.g.\ schools weekdays 7:00--16:00; places of worship Sunday morning and Wednesday evening; fire and police stations 24/7). We repeat the analysis with generous hours (every site open 6:00--22:00 daily).
+\item \textbf{Walking distances:} shortest paths on the OpenStreetMap pedestrian network of Virginia Beach (52{,}708 intersections, 71{,}677 street segments) via OSMnx, up to 1 km.
+\item \textbf{Vulnerability:} CDC/ATSDR Social Vulnerability Index 2022 \cite{flanagan2011} for the city's 112 census tracts (2022 TIGER boundaries; 111 have an SVI score), split into quartiles within the city.
+\end{itemize}
+
+\subsection{Experimental procedure}
+\begin{enumerate}
+\item \textbf{Methods compared.} (a) random placement (average of 50 draws); (b) the classic MCLP \cite{church1974}: maximize arrests within 100 m walking, assuming every site is always open; (c) our survival-based, hours-aware model.
+\item \textbf{Temporal cross-validation.} The 30 months are split into five half-year folds. For each fold, sites are chosen using the other four and scored on the held-out half-year, so every method is judged on arrests it never saw. Out-of-sample gains are added up over all 2{,}706 arrests.
+\item \textbf{Metric.} Every method is scored by the same measure of reality: expected survival gain with real walking distances and real opening hours.
+\item \textbf{Uncertainty.} 95\% confidence intervals from 2{,}000 bootstrap resamples of arrests; method differences are bootstrapped in pairs.
+\item \textbf{Solver.} Exact MILP with HiGHS (via SciPy) and a lazy greedy algorithm; a negligible tie-breaker prefers sites with more historical arrests nearby.
+\end{enumerate}
+
+\subsection{Units: ``potential survivors''}
+Because Valenzuela's curve describes witnessed shockable arrests, $F$ counts \emph{potential survivors}: extra survivors if every arrest were witnessed, shockable, and had a willing bystander. Nationally, 10.8\% of arrests are bystander-witnessed and shockable \cite{caresall}, so multiplying by 0.108 gives a rough real-world estimate; since not every bystander will fetch an AED, even this is an upper bound. We report potential survivors because they compare methods fairly; absolute lives are discussed in Section~\ref{sec:discussion}.
+
+\section{Results}
+
+\subsection{RQ1: survival-based placement generalizes better}
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{rcccc}
+\toprule
+AEDs $p$ & Random & Classic MCLP & \textbf{Survival-based (ours)} & Ours $-$ classic [95\% CI]\\
+\midrule
+10  & 1.2  & 7.5  & \textbf{9.5}  & $+2.0$ [$-0.3$, 4.4]\\
+25  & 3.3  & 12.0 & \textbf{18.0} & $+6.1$ [3.6, 8.8]\\
+50  & 6.5  & 21.4 & \textbf{25.8} & $+4.4$ [0.8, 8.1]\\
+100 & 11.5 & 25.7 & \textbf{34.5} & $+8.8$ [5.7, 12.2]\\
+200 & 20.7 & 25.7 & \textbf{42.0} & $+16.4$ [12.8, 20.3]\\
+\bottomrule
+\end{tabular}
+\caption{Out-of-sample expected survival gain (potential survivors over 30 months), pooled across five temporal folds.}
+\label{tab:cv}
+\end{table}
+
+The survival-based model beat the classic MCLP at every budget (Table~\ref{tab:cv}, Figure~\ref{fig:cv}), by 51\% at $p=25$, 21\% at $p=50$, 34\% at $p=100$ and 64\% at $p=200$; the difference is statistically significant for $p\ge 25$. Both beat random placement by a wide margin. The classic model levels off after about 100 AEDs because only 7.2\% of arrests are within 100 m of \emph{any} candidate site (47.2\% are within 500 m). Ignoring everything beyond 100 m throws away arrests where a slightly longer walk would still beat EMS.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\linewidth]{fig4_cross_validation.png}
+\caption{Out-of-sample expected survival gain with 95\% bootstrap bands.}
+\label{fig:cv}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig3_map.png}
+\caption{Fifty AED sites chosen by the classic MCLP (left) and by our model (right). Dots are cardiac arrests colored by EMS response time; tract shading is the Social Vulnerability Index.}
+\label{fig:map}
+\end{figure}
+
+\subsection{RQ2: opening hours matter more than expected}
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{rcccc}
+\toprule
+$p$ & Promised (assumes 24/7) & Delivered by that plan & Hours-aware plan & Same sites, 24/7 cabinets\\
+\midrule
+25  & 41.2 & 18.1 & 29.3 & 41.2\\
+50  & 59.7 & 27.0 & 40.1 & 59.7\\
+100 & 79.5 & 35.6 & 50.7 & 79.5\\
+200 & 95.8 & 43.7 & 55.8 & 95.8\\
+\bottomrule
+\end{tabular}
+\caption{Expected survival gain (all arrests, potential survivors) when planners ignore or use opening hours.}
+\label{tab:hours}
+\end{table}
+
+If the city chose sites as if every AED were reachable 24/7, it would expect more than twice the benefit it actually gets: the plan's promise overstates reality by 119--158\% (Table~\ref{tab:hours}, Figure~\ref{fig:hours}). Planning with real hours delivers 49\% more benefit than the naive plan at $p=50$, and moving the same AEDs into outdoor 24/7 cabinets adds another 49\%. Night-time is where the loss is concentrated: between midnight and 3 a.m.\ an indoor-only plan delivers less than a quarter of the cabinet benefit. Even under generous assumed hours (6:00--22:00 daily) the overstatement is 34--47\% and cabinets add 23--28\%, compared with the 21.5\% overstatement found in Toronto \cite{sun2016}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig5_opening_hours.png}
+\caption{\textbf{Left:} the benefit an AED plan promises versus what it delivers. \textbf{Right:} benefit by time of the 911 call for 50 AEDs, indoors versus in 24/7 outdoor cabinets.}
+\label{fig:hours}
+\end{figure}
+
+\subsection{RQ3: steering AEDs toward slow-EMS areas does not help}
+Our model was built to give more weight to arrests where EMS was slow. An ablation study (Table~\ref{tab:ablation}) tests whether that ingredient matters, by replacing every arrest's response time with the citywide median.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lccc}
+\toprule
+Variant & $p=25$ & $p=50$ & $p=100$\\
+\midrule
+Classic MCLP (100 m, assumes 24/7) & 12.0 & 21.4 & 25.7\\
+\quad + opening hours & 14.9 & 22.5 & 23.8\\
+\quad + survival scoring (no hours) & 13.9 & 20.9 & 28.7\\
+Survival + hours, \emph{median} response time & \textbf{18.1} & \textbf{27.2} & \textbf{36.8}\\
+Survival + hours, \emph{location-smoothed} response time (1 km) & 17.3 & 26.9 & 34.7\\
+Survival + hours, \emph{each arrest's own} response time (full model) & 18.0 & 25.8 & 34.5\\
+\bottomrule
+\end{tabular}
+\caption{Ablation: out-of-sample potential survivors. The gain comes from combining survival scoring with opening hours; response-time weighting adds nothing.}
+\label{tab:ablation}
+\end{table}
+
+Using each arrest's own response time does \emph{not} improve out-of-sample results; the version with a single median time is as good or better (at $p=100$ it is significantly better, difference 2.3, 95\% CI [0.4, 4.5]). A location-smoothed response time, built only from training data, does not help either. The reason is that EMS delay in Virginia Beach is barely predictable from location: a leave-one-out kernel average of nearby response times explains at most 7\% of the variance ($R^2=0.07$ at 1 km bandwidth). Delay depends far more on circumstances (which crew is free, traffic) than on place. Clinical studies show that the benefit of a bystander AED grows with EMS delay \cite{pollack2018,hindborg2025}, but our results suggest that, at least in this city, historical delays cannot tell a planner \emph{where} that delay will strike next.
+
+What does help is the \emph{combination} of survival scoring with opening hours: each ingredient alone gives small or inconsistent gains, but together they produce the full improvement. Survival scoring values walks of 100--500 m that the classic model ignores, and opening hours make sure those longer walks lead to an AED that is actually reachable.
+
+\subsection{RQ4: fairness is cheap, but full parity is impossible}
+Without any constraint, the most vulnerable quartile ($Q_4$) already receives above-average benefit. The \emph{least} vulnerable quartile ($Q_1$) is the worst served (Figure~\ref{fig:fair}): these low-density suburbs have the slowest EMS (median 7.8 minutes versus 7.1--7.5 elsewhere) and the fewest candidate sites (0.9 per km$^2$ versus 3.0 in $Q_4$). In Virginia Beach, AED access is a geography problem more than an income problem, unlike in England \cite{brown2025}.
+
+Requiring every quartile to receive at least 80\% of the citywide average costs only 1.5\% of total benefit at $p=50$ (3.0\% at $p=25$), and 85\% costs 3.5\% (4.9\% at $p=25$). But 90\% was infeasible at every budget, and for $p=100$ even 80\% was infeasible. This matches the Proposition: with an AED at every one of the 929 sites, $Q_1$ could receive at most $C_1=0.0142$ per arrest, while the $p=100$ plan averages $T=0.0188$, so $\varphi\le 0.0142/0.0188\approx 0.75$. Our solver found $\varphi=0.75$ feasible and $\varphi=0.80$ infeasible, exactly as the bound predicts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig6_fairness.png}
+\caption{\textbf{Left:} price of fairness as the worst-served quartile is raised toward the citywide average. \textbf{Right:} benefit per 100 arrests by SVI quartile for 50 AEDs.}
+\label{fig:fair}
+\end{figure}
+
+\subsection{Robustness}
+\label{sec:sens}
+We repeated the cross-validation under eight alternative assumptions: slower (1.0 m/s) and faster (2.0 m/s) bystanders, 300 m and 800 m walking limits, the De Maio survival curve, a 2-minute call delay, removing the 374 imputed response times, and removing the 20 most frequent addresses (which include healthcare facilities). In all 24 scenario-budget combinations, our model beat the classic MCLP, and the 95\% interval excluded zero in 20 of them (Figure~\ref{fig:sens}). The four exceptions are all at $p=50$, the budget where the advantage is smallest in the main analysis as well.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\linewidth]{fig7_sensitivity.png}
+\caption{Advantage of our model over the classic MCLP under alternative assumptions (95\% bootstrap intervals).}
+\label{fig:sens}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Recommendations for Virginia Beach.}
+\begin{enumerate}
+\item \textbf{Plan with opening hours, and prefer outdoor 24/7 cabinets.} This is the single largest lever we found: 50 AEDs in outdoor cabinets deliver more expected benefit than 200 well-placed indoor AEDs (Table~\ref{tab:hours}: 59.7 versus 55.8).
+\item \textbf{Score sites by survival, not by a 100 m radius.} A 200--500 m walk is still often faster than EMS.
+\item \textbf{Do not chase historical slow-response spots.} Response times are too noisy to guide placement.
+\item \textbf{Add a fairness floor:} 85\% parity costs under 5\%. Because building-hosted AEDs cannot reach parity in low-density suburbs, pair them with street-side cabinets, drones or volunteer-responder alerts there.
+\end{enumerate}
+
+\paragraph{How many lives?} Multiplying by the national share of witnessed shockable arrests (10.8\%), 50 well-placed indoor AEDs correspond to about 4.3 extra survivors over the 30 months of data (Table~\ref{tab:hours}; about 2.8 when judged strictly out-of-sample, Table~\ref{tab:cv}), and putting the same 50 AEDs in 24/7 cabinets raises this to about 6.5. These are upper bounds, because not every bystander will fetch an AED, and they are modest numbers for a city. That is an honest picture: 71\% of arrests happen at home \cite{caresall}, out of reach of any public AED, so public AEDs are one link in the chain of survival rather than a cure.
+
+\paragraph{Limitations.}
+\begin{itemize}
+\item The data record dispatches, not confirmed arrests, and do not say whether the arrest was witnessed, its rhythm, its outcome, or whether it happened at home or in public. We therefore use published survival curves rather than local outcomes.
+\item Addresses are rounded to the block, and some frequent addresses are healthcare facilities. Removing the top 20 addresses does not change the conclusions.
+\item Most opening hours (720 of 929 sites) are assumed by category; the generous-hours test shows the main finding survives, but its size depends on these assumptions.
+\item 374 response times were imputed with a weak model ($r=0.21$); results without them agree.
+\item The survival curves come from other cities and decades \cite{valenzuela1997,demaio2003}; we test both, and the ranking of methods does not change.
+\item We assume a bystander is present and willing. In reality, bystander AED use is rare \cite{cares2024}, which scales all methods down equally.
+\end{itemize}
+
+\paragraph{Future work.} Validate against actual outcomes through the CARES registry; model the chance that a bystander is present by place and time; extend the fairness analysis to mixed portfolios of fixed AEDs, cabinets and drones; and repeat the analysis in another city with public data.
+
+\section{Prototype: AED Placement Explorer}
+\label{sec:proto}
+As a bonus prototype we built an interactive web map (a single HTML file, with code in the project repository). A slider adds AEDs one at a time in greedy order (1--200), and the user can switch between indoor sites with real hours, 24/7 outdoor cabinets, and the classic MCLP. The map shows every arrest colored by EMS response time and every chosen site with its opening hours and marginal benefit, and a side panel reports total expected survival gain, improvement over the classic model, and benefit by vulnerability quartile. The full pipeline (data download, cleaning, walking distances, optimization, experiments and figures) is open source and reproducible from public data.
+
+\section{Conclusion}
+Using only open data, we showed that a survival-based, opening-hours-aware model places AEDs that save 21--64\% more expected lives on unseen arrests than the standard approach, and that ignoring opening hours more than doubles a plan's apparent benefit. We also found that two intuitive ideas do not hold in Virginia Beach: that AEDs should follow historically slow EMS, and that the most vulnerable neighborhoods are the least served. The broader lesson is that \emph{when} an AED can be reached matters as much as \emph{where} it is, and that some gaps in access cannot be closed by placement alone.
+
+\begin{thebibliography}{99}\small
+\bibitem{cares2024} Cardiac Arrest Registry to Enhance Survival (CARES). \emph{2024 Metrics Summary}. May 2025. \url{https://mycares.net}
+\bibitem{caresall} CARES. \emph{National Survival Report, 2013--2025, Non-Traumatic Etiology}. April 2026. \url{https://mycares.net}
+\bibitem{larsen1993} Larsen MP, Eisenberg MS, Cummins RO, Hallstrom AP. Predicting survival from out-of-hospital cardiac arrest: a graphic model. \emph{Ann Emerg Med}. 1993;22(11):1652--1658. doi:10.1016/S0196-0644(05)81302-2
+\bibitem{valenzuela1997} Valenzuela TD, Roe DJ, Cretin S, Spaite DW, Larsen MP. Estimating effectiveness of cardiac arrest interventions: a logistic regression survival model. \emph{Circulation}. 1997;96(10):3308--3313. doi:10.1161/01.CIR.96.10.3308
+\bibitem{demaio2003} De Maio VJ, Stiell IG, Wells GA, Spaite DW. Optimal defibrillation response intervals for maximum out-of-hospital cardiac arrest survival rates. \emph{Ann Emerg Med}. 2003;42(2):242--250. doi:10.1067/mem.2003.266
+\bibitem{erkut2008} Erkut E, Ingolfsson A, Erdo\u{g}an G. Ambulance location for maximum survival. \emph{Naval Research Logistics}. 2008;55(1):42--58. doi:10.1002/nav.20267
+\bibitem{weisfeldt2010} Weisfeldt ML, Sitlani CM, Ornato JP, et al. Survival after application of automatic external defibrillators before arrival of the emergency medical system. \emph{J Am Coll Cardiol}. 2010;55(16):1713--1720. doi:10.1016/j.jacc.2009.11.077
+\bibitem{pollack2018} Pollack RA, Brown SP, Rea T, et al. Impact of bystander automated external defibrillator use on survival and functional outcomes in shockable observed public cardiac arrests. \emph{Circulation}. 2018;137(20):2104--2113. doi:10.1161/CIRCULATIONAHA.117.030700
+\bibitem{hindborg2025} Hindborg M, Yonis H, Gnesin F, et al. Bystander defibrillation and survival according to emergency medical service response time after out-of-hospital cardiac arrest. \emph{Prehosp Emerg Care}. 2025. doi:10.1080/10903127.2025.2478211
+\bibitem{hansen2013} Hansen CM, Wissenberg M, Weeke P, et al. Automated external defibrillators inaccessible to more than half of nearby cardiac arrests in public locations during evening, nighttime, and weekends. \emph{Circulation}. 2013;128(20):2224--2231. doi:10.1161/CIRCULATIONAHA.113.003066
+\bibitem{karlsson2019} Karlsson L, Malta Hansen C, Wissenberg M, et al. Automated external defibrillator accessibility is crucial for bystander defibrillation and survival. \emph{Resuscitation}. 2019;136:30--37. doi:10.1016/j.resuscitation.2019.01.014
+\bibitem{deakin2018} Deakin CD, Anfield S, Hodgetts GA. Underutilisation of public access defibrillation is related to retrieval distance and time-dependent availability. \emph{Heart}. 2018;104(16):1339--1343. doi:10.1136/heartjnl-2018-312998
+\bibitem{karlsson2021} Karlsson L, Sun CLF, Torp-Pedersen C, et al. Implications for cardiac arrest coverage using straight-line versus route distance to nearest automated external defibrillator. \emph{Resuscitation}. 2021;167:326--335. doi:10.1016/j.resuscitation.2021.07.014
+\bibitem{toregas1971} Toregas C, Swain R, ReVelle C, Bergman L. The location of emergency service facilities. \emph{Operations Research}. 1971;19(6):1363--1373. doi:10.1287/opre.19.6.1363
+\bibitem{church1974} Church R, ReVelle C. The maximal covering location problem. \emph{Papers of the Regional Science Association}. 1974;32:101--118. doi:10.1007/BF01942293
+\bibitem{nemhauser1978} Nemhauser GL, Wolsey LA, Fisher ML. An analysis of approximations for maximizing submodular set functions---I. \emph{Mathematical Programming}. 1978;14:265--294. doi:10.1007/BF01588971
+\bibitem{petravic2025} Petravi\'c L, Rogina KG, Mikli\v{c} R, et al. Strategic PAD positioning: a scoping review. \emph{Scand J Trauma Resusc Emerg Med}. 2025. doi:10.1186/s13049-025-01527-8
+\bibitem{chan2013} Chan TC, Li H, Lebovic G, et al. Identifying locations for public access defibrillators using mathematical optimization. \emph{Circulation}. 2013;127(17):1801--1809. doi:10.1161/CIRCULATIONAHA.113.001953
+\bibitem{chan2016} Chan TCY, Demirtas D, Kwon RH. Optimizing the deployment of public access defibrillators. \emph{Management Science}. 2016;62(12):3617--3635. doi:10.1287/mnsc.2015.2312
+\bibitem{sun2016} Sun CLF, Demirtas D, Brooks SC, Morrison LJ, Chan TCY. Overcoming spatial and temporal barriers to public access defibrillators via optimization. \emph{J Am Coll Cardiol}. 2016;68(8):836--845. doi:10.1016/j.jacc.2016.03.609
+\bibitem{sun2020} Sun CLF, Karlsson L, Morrison LJ, Brooks SC, Folke F, Chan TCY. Effect of optimized versus guidelines-based automated external defibrillator placement on out-of-hospital cardiac arrest coverage: an in silico trial. \emph{J Am Heart Assoc}. 2020;9(17):e016701. doi:10.1161/JAHA.120.016701
+\bibitem{siddiq2013} Siddiq AA, Brooks SC, Chan TC. Modeling the impact of public access defibrillator range on public location cardiac arrest coverage. \emph{Resuscitation}. 2013;84(7):904--909. doi:10.1016/j.resuscitation.2012.11.019
+\bibitem{pourghaderi2021} Pourghaderi AR, Kogtikov N, Lees MH, et al. Maximum expected survival rate model for public access defibrillator placement. \emph{Resuscitation}. 2021;170:213--221. doi:10.1016/j.resuscitation.2021.11.039
+\bibitem{buter2024} Buter R, et al. Strategic placement of volunteer responder system defibrillators. \emph{Health Care Management Science}. 2024. doi:10.1007/s10729-024-09685-4
+\bibitem{dahan2016} Dahan B, Jabre P, Karam N, et al. Optimization of automated external defibrillator deployment outdoors: an evidence-based approach. \emph{Resuscitation}. 2016;108:68--74. doi:10.1016/j.resuscitation.2016.09.010
+\bibitem{aeby2021} Aeby D, Staeger P, Dami F. How to improve automated external defibrillator placement for out-of-hospital cardiac arrests: a case study. \emph{PLoS One}. 2021;16(5):e0250591. doi:10.1371/journal.pone.0250591
+\bibitem{brown2025} Brown TP, Andronis L, El-Banna A, et al. Optimisation of the deployment of automated external defibrillators in public places in England. \emph{Health Soc Care Deliv Res}. 2025;13(5). doi:10.3310/HTBT7685
+\bibitem{sasson2012} Sasson C, Magid DJ, Chan P, et al. Association of neighborhood characteristics with bystander-initiated CPR. \emph{N Engl J Med}. 2012;367(17):1607--1615. doi:10.1056/NEJMoa1110700
+\bibitem{starks2017} Starks MA, Schmicker RH, Peterson ED, et al. Association of neighborhood demographics with out-of-hospital cardiac arrest treatment and outcomes. \emph{JAMA Cardiol}. 2017;2(10):1110--1118. doi:10.1001/jamacardio.2017.2671
+\bibitem{leung2021} Leung KHB, Brooks SC, Clegg GR, Chan TCY. Socioeconomically equitable public defibrillator placement using mathematical optimization. \emph{Resuscitation}. 2021;166:14--20. doi:10.1016/j.resuscitation.2021.07.002
+\bibitem{bertsimas2011} Bertsimas D, Farias VF, Trichakis N. The price of fairness. \emph{Operations Research}. 2011;59(1):17--31. doi:10.1287/opre.1100.0865
+\bibitem{custodio2022} Custodio JESC, Lejeune MA. Spatiotemporal data set for out-of-hospital cardiac arrests. \emph{INFORMS Journal on Computing}. 2022;34(1):4--10. doi:10.1287/ijoc.2020.1022
+\bibitem{flanagan2011} Flanagan BE, Gregory EW, Hallisey EJ, Heitgerd JL, Lewis B. A social vulnerability index for disaster management. \emph{J Homeland Security and Emergency Management}. 2011;8(1). doi:10.2202/1547-7355.1792. Data: CDC/ATSDR SVI 2022.
+\end{thebibliography}
+
+\end{document}
