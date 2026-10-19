@@ -22,25 +22,25 @@ Voiceover over slides and screen recordings. The **[VISUAL]** lines say what goe
 
 > The standard method in the research is called the maximal covering location problem. It counts how many past arrests are within 100 meters of an AED. I replaced that count with expected survival. For each arrest and each possible site, like a pharmacy, church, school or gas station, I calculated how much a bystander fetching that AED would raise the chance of survival. That uses real walking routes on the city's street map, a published survival curve, and whether the building was actually open at the time of the arrest.
 >
-> Then I chose the sites that maximize total survival. I proved this function has a property called submodularity, which guarantees a simple greedy algorithm gets at least 63 percent of the best possible answer. I also solved it exactly with integer programming.
+> Then I chose the sites that maximize total survival. I proved this function has a property called submodularity, which guarantees a simple greedy algorithm gets at least 63 percent of the best possible answer. In practice it got 99.9 percent. I also solved it exactly with integer programming.
 
 ## 4. Results (1:50–3:05)
 
 **[VISUAL]** Figure 4 (cross-validation). Then Figure 3 (map, side by side).
 
-> To test it fairly, I trained on some months and tested on months the model had never seen. My model delivered 21 to 64 percent more benefit than the standard method, and it held up across 24 different robustness checks.
+> To test it fairly, I trained on some months and tested on months the model had never seen. My model delivered 42 to 67 percent more benefit than the standard method, beat stronger methods from recent papers, and held up across 30 robustness checks.
 
 **[VISUAL]** Figure 5 (opening hours). Highlight the grey "promised" bars against the blue "delivered" bars.
 
-> The biggest surprise was opening hours. If you plan as if every AED is always reachable, you overestimate the benefit by more than double, because many arrests happen at night when buildings are locked. Putting the same AEDs in 24/7 outdoor cabinets fixes that: 50 outdoor cabinets beat 200 indoor AEDs.
+> The biggest surprise was opening hours. If you plan as if every AED is always reachable, you overestimate the benefit by about 70 percent, because many arrests happen at night when buildings are locked. Outdoor 24/7 cabinets fix that: 25 cabinets do as much as 50 indoor AEDs, so one cabinet is worth about two.
 
 **[VISUAL]** Ablation table, with "own response time" crossed out.
 
-> I also tested an idea I expected to work: putting AEDs where EMS has been slowest. It didn't help. Location explains only 7 percent of the variation in response time, so slow EMS is mostly bad luck, not geography.
+> I also tested an idea I expected to work: putting AEDs where EMS has been slowest. It didn't help. Location explains only 7 percent of the variation in response time, so slow EMS is mostly bad luck, not geography. So instead I averaged over all the city's response times, which gives a reach curve: an AED loses half its value within about 120 meters of walking.
 
 **[VISUAL]** Figure 6 (fairness).
 
-> Finally, fairness. I added a constraint so every neighborhood gets a fair share. Getting every group to 85 percent of the average costs less than 5 percent of the total benefit. But I proved that full fairness is impossible here: some suburbs just don't have enough buildings to host AEDs.
+> Finally, fairness. I added a constraint so every neighborhood gets a fair share. On new data, that cost nothing measurable. But I proved that full fairness is impossible here: some suburbs just don't have enough buildings to host AEDs.
 
 ## 5. Prototype and close (3:05–3:45)
 

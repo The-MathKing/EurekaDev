@@ -12,10 +12,10 @@ This is a research project that combines optimization, probability and open data
 
 ## Key findings
 
-1. **Survival-based placement saves 21–64% more expected lives on unseen data** than the standard maximal covering model. This comes from 5-fold temporal cross-validation with bootstrap confidence intervals, and it holds in all 24 robustness scenarios.
-2. **Ignoring opening hours overstates an AED plan's benefit by 34–158%.** 24/7 outdoor cabinets recover 23–49%, and 50 outdoor cabinets beat 200 indoor AEDs.
-3. **Tested and rejected:** placing AEDs where EMS was historically slow does not help, because location explains only about 7% of the variation in response time.
-4. **Fairness is cheap but has a ceiling.** Raising every vulnerability group to 85% of the average costs under 5%, but full parity is impossible with building-hosted AEDs. Low-density suburbs need other tools, such as street cabinets, drones or responder apps.
+1. **Survival-based placement delivers 42–67% more expected survival benefit on unseen data** than the standard maximal covering model, and it beats stronger baselines from the literature. This comes from 5-fold temporal cross-validation with address-clustered bootstrap confidence intervals, and it holds in all 30 robustness checks.
+2. **Ignoring opening hours overstates an AED plan's benefit by 67–106%.** 24/7 outdoor cabinets deliver 41–63% more than indoor AEDs, so one cabinet is worth about two indoor AEDs.
+3. **Tested and rejected:** placing AEDs where EMS was historically slow does not help, because location explains only about 7% of the variation in response time. Averaging over the response-time distribution instead gives a derived "reach curve": an AED loses half its value within about 123 m of walking.
+4. **Fairness is cheap but has a ceiling.** A fairness floor across vulnerability groups had no detectable cost on unseen data, but full parity is impossible with building-hosted AEDs. Low-density suburbs need other tools, such as street cabinets, drones or responder apps.
 
 ## How I built it
 
@@ -29,6 +29,7 @@ This is a research project that combines optimization, probability and open data
 - **Missing data:** 373 arrests had a response time of exactly 0, which means not recorded rather than instant. I imputed them, and confirmed every result still holds when they're removed.
 - **Rare events:** a single test year was too noisy, so I switched to cross-validation with bootstrap confidence intervals.
 - **A fairness bug:** my first fairness constraint let the solver "look fair" by ignoring benefit in well-served areas. Fixing it led to the feasibility bound.
+- **An outside review:** an independent review found a walking-distance bug (some far-away pairs were counted as 0 m) and a headline claim that only held in-sample. I fixed the bug, re-ran every experiment out-of-sample, and dropped the claim. The main results got stronger.
 - **My own hypothesis failed:** I expected weighting by EMS delay to help, and it didn't. I report that honestly as a finding.
 
 ## Accomplishments I'm proud of

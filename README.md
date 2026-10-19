@@ -8,10 +8,10 @@ EurekaDev 2026, Research Track (Math & Physics). The paper is [paper/paper.pdf](
 
 The data are 2,706 cardiac arrests in Virginia Beach, 2017–2019.
 
-1. **Survival-based placement beats the standard method.** On arrests the model never saw, choosing sites to maximize expected survival gives 21–64% more benefit than the classic maximal covering location problem (MCLP), for 25–200 AEDs. Validation uses 5-fold temporal cross-validation with bootstrap confidence intervals. The advantage holds in all 24 robustness scenarios.
-2. **Opening hours matter a lot.** A plan that assumes every AED is reachable 24/7 overstates its real benefit by 34–158%. Putting the same AEDs in 24/7 outdoor cabinets adds 23–49%, and 50 cabinets beat 200 indoor AEDs.
-3. **Steering AEDs toward historically slow EMS does not help.** Location explains only about 7% of the variation in response time.
-4. **Fairness is cheap but has a hard ceiling.** Making every Social Vulnerability Index quartile get at least 85% of the citywide average costs under 5% of total benefit. A simple bound, proved in the paper, shows that full parity is impossible with building-hosted AEDs alone.
+1. **Survival-based placement beats the standard method.** On arrests the model never saw, choosing sites to maximize expected survival gives 42–67% more benefit than the classic maximal covering location problem (MCLP), for 25–200 AEDs. It also beats stronger baselines in the style of Sun et al. 2016 and Pourghaderi et al. 2021. Validation uses 5-fold temporal cross-validation with address-clustered bootstrap confidence intervals. The advantage holds in all 30 robustness checks.
+2. **Opening hours matter a lot.** A plan that assumes every AED is reachable 24/7 overstates its real benefit by 67–106% on held-out arrests. 24/7 outdoor cabinets deliver 41–63% more than indoor AEDs: one cabinet is worth about two indoor AEDs.
+3. **Steering AEDs toward historically slow EMS does not help.** Location explains only about 7% of the variation in response time. So the model averages over the city's response-time distribution, which gives a derived "reach curve": an AED loses half its value within about 123 m of walking.
+4. **Fairness is cheap but has a hard ceiling.** A fairness floor across Social Vulnerability Index quartiles had no detectable out-of-sample cost. A simple bound, proved in the paper, shows that full parity is impossible with building-hosted AEDs alone.
 
 ## The model
 
