@@ -12,8 +12,13 @@ P_MAX = 200
 os.makedirs(OUT, exist_ok=True)
 
 o, s, pairs = load()
+# Sites are ordered with the expected-survival model (response-time distribution) and scored
+# with each arrest's actual response time, as in the paper.
+rt = o.response_min[~o.rt_imputed].values
 G_real = gains(o, s, pairs, Params())
 G_247 = gains(o, s, pairs, Params(hours="always"))
+P_real = gains(o, s, pairs, Params(), rt_sample=rt)
+P_247 = gains(o, s, pairs, Params(hours="always"), rt_sample=rt)
 G_mclp = pairs[pairs.walk_m <= 100].assign(g=1.0)
 
 svi = o.svi_q.fillna(0).astype(int).values  # 0 = no SVI data
@@ -35,7 +40,7 @@ def prefix_curve(order, G):
 
 
 scen = {}
-for key, order_G, eval_G in [("indoor", G_real, G_real), ("cabinet", G_247, G_247),
+for key, order_G, eval_G in [("indoor", P_real, G_real), ("cabinet", P_247, G_247),
                              ("classic", G_mclp, G_real)]:
     order = [int(j) for j in greedy(order_G, P_MAX)]
     total, quart, marg = prefix_curve(order, eval_G)
