@@ -63,3 +63,30 @@ At p=50 and p=100 the main model significantly beats random, all three MCLP vari
 1. **Reach curve (new Fig. 8, left).** The expected survival gain from an AED at walking distance d is the survival gain averaged over the city's real EMS response times. It's derived, not assumed. **Half-value distance: ~123 m** at 1.4 m/s. This explains why the 100 m guideline is roughly right, and why a hard cutoff is wrong.
 2. **Distributional model.** Because location explains only 7% of response-time variance, plan with E_R[g], the gain averaged over response times. The average of monotone submodular functions is still monotone submodular, so the greedy guarantee still holds. It **needs only a city's response-time distribution**, not incident-level times, so it transfers to cities that don't publish incident data.
 3. **Bound, corrected and budget-free.** With an AED at every site, Q1 can get at most C₁ = 0.0123 per arrest, while the all-sites citywide average is T∞ = 0.0153. So parity relative to the all-sites average is capped at **φ ≤ 0.81**, whatever the budget. Per budget, the bound C_min / T_p is 0.89 at p=100, and the solver found 0.85 feasible and 0.90 infeasible, consistent with it. At p=25 and 50 the bound exceeds 1, so the budget limits fairness, not the bound. State it as a *necessary* condition.
+
+---
+
+# Round 2: fixes from the re-grade (score 3.6 → 4.0)
+
+Paper text changes for you to make, because you're editing paper.tex. Find each spot with Cmd+F on the quoted words. The numbers come from `results/descriptives.json` and the CSVs named above.
+
+1. **Coverage metric is mislabelled (major).** Search for *"does not lose on the classic method's own metric"* (RQ1 results), *"we also report the classic method's own metric"* (Experimental procedure, Metric bullet), and *"on which our plan does not lose"* (Limitations). The measure we reported counts an arrest only if an **open** AED is within 100 m. The classic method's own measure ignores hours. Suggested replacement for the RQ1 sentence:
+   > On simple 100 m coverage the picture is mixed. Counting only AEDs that were open at the time, our plan covered as many or more held-out arrests for p ≥ 50 (26 vs. 25 at p = 50; 32 vs. 28 at p = 100). Ignoring opening hours (the classic method's own measure), the classic plan covered more at small budgets (43 vs. 40 at p = 50), and the two were tied from p = 100 (48 vs. 47; 53 vs. 53).
+
+   In the Limitations, replace the last clause with: *"we partly guard against this by also reporting simple 100 m coverage, where the two methods are close."*
+2. **Abstract: "also beats stronger baselines from the literature".** Change it to *"and, for 50–100 AEDs, also significantly beats stronger baselines from the literature"*. At p = 10 ours is slightly below two of them.
+3. **RQ3: "did not help either".** Change it to *"made no significant difference either"*. It was slightly higher at p = 25 and 50, but not significantly.
+4. **RQ4: "no quartile can be guaranteed more than about 81%".** Only the least-served quartile is capped. Change it to *"the least-served quartile (Q₁) can never receive more than about 81% of that best-possible citywide level, whatever the budget."*
+5. **Discussion, recommendation 4: "85–90% parity cost at most 2.6% … no detectable cost".** Change it to: *"a floor of 85% cost at most 0.6% in-sample and showed no detectable cost on held-out arrests (though we did not compute a confidence interval for that comparison); 90% was still cheap where feasible but infeasible at p = 100."* At RQ4 "total benefit was if anything slightly higher", add *"(no confidence interval computed)"*.
+6. **"Halves within about 123 m".** This is at brisk walking pace (1.4 m/s); it is 88 m at 1.0 m/s and 176 m at 2.0 m/s. Add *"at a brisk walking pace"* in the abstract, RQ3 and the conclusion.
+7. **Honest framing of the reach curve (reviewer's novelty note).** In the Literature Review gap (iii), or right after the reach-curve definition, add: *"Because \bar g_{ij} depends only on distance and opening hours, the main model is a gradual-coverage MCLP \cite{chan2016,buter2024}; what is new is that its distance decay is derived from the survival curve and the city's own EMS delays rather than chosen by hand."*
+8. **Estimated clinical impact.** After the 2.0 / 2.8 survivors sentence, add: *"Because the 10.8% factor is applied to every dispatch, including the 71% of arrests that happen at home, these are upper bounds."*
+9. **Limitations, new sentence:** *"Fifty-one arrests more than 150 m from any walkable path score zero under every method; they lower all quartiles' maximum benefit C_q slightly but do not favour any method."*
+10. **De Maio caveat.** In Table 1's De Maio row, or in Robustness, add: *"De Maio's curve, as reproduced by Erkut et al., gives higher absolute survival than De Maio's own population rates, so we use it only to check that the ranking of methods is unchanged."*
+11. **Figure 5 caption (right panel).** Add: *"The indoor and cabinet plans are optimized separately, so they use different sites; that is why indoor can exceed cabinets in some time blocks."*
+12. **Wording that's inaccurate rather than just stylistic:**
+    - "validated logistic models" → "published logistic models". They come from other cities and weren't validated here.
+    - "telemetry sidebar" → "side panel".
+    - "smart cabinets" (RQ2) → "outdoor 24/7 cabinets". Nothing in the model is smart.
+    - "indispensable multiplier" overclaims for about 1 survivor per year. Something like *"a valuable complement during the first minutes of public shockable arrests"* is safer.
+13. **"Fully reproducible from public records" (Prototype section)** is now true: `run_all.sh` runs exactly the scripts behind the paper. No change needed.

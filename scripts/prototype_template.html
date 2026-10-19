@@ -95,9 +95,10 @@
     <b>How it works.</b> Each candidate site is scored by how much it raises the probability of survival for
     nearby cardiac arrests if a bystander walks to fetch its AED, compared with waiting for the ambulance that
     actually arrived (Valenzuela et al. 1997 survival model, real walking routes). Sites are added one at a time
-    by a greedy algorithm, which matched the exact integer-program optimum on this data; the indoor strategy only
-    counts a site if it was open at the time of the 911 call. Gains are <i>potential</i> survivors: they assume a
-    shockable rhythm and a willing bystander, so real-world numbers are smaller.
+    by a greedy algorithm, which comes within 0.1% of the exact integer-program optimum on this data; the indoor
+    strategy only counts a site if it was open at the time of the 911 call. Gains are <i>potential</i> survivors:
+    they assume a shockable rhythm and a willing bystander, so real-world numbers are smaller. Numbers here use all
+    2,706 arrests (in-sample); the paper reports out-of-sample results, which are lower.
   </div>
 </aside>
 <div id="map"></div>
