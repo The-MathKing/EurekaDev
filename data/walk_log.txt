@@ -1,2 +1,3 @@
 walk graph: 52708 nodes 71677 edges
-15857 OHCA-site pairs within 1000 m
+arrests snapped > 150 m: 51, sites snapped > 150 m: 46
+14259 OHCA-site pairs within 1000 m

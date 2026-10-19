@@ -8,3 +8,6 @@ paper/*.out
 __pycache__/
 .DS_Store
 data/walk_pairs_buggy.csv
+
+# local experiments with private API keys
+scripts/test_candidate_abs.py

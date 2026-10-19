@@ -1,0 +1,177 @@
+{
+ "loo_kernel_r2": {
+  "500": 0.054,
+  "1000": 0.0713,
+  "2000": 0.0622,
+  "3000": 0.0515
+ },
+ "quartiles": [
+  {
+   "svi_q": 1.0,
+   "km2": 173.265,
+   "sites": 153.0,
+   "sites_per_km2": 0.883,
+   "median_rt_valid": 7.675
+  },
+  {
+   "svi_q": 2.0,
+   "km2": 473.705,
+   "sites": 308.0,
+   "sites_per_km2": 0.65,
+   "median_rt_valid": 6.717
+  },
+  {
+   "svi_q": 3.0,
+   "km2": 62.965,
+   "sites": 188.0,
+   "sites_per_km2": 2.986,
+   "median_rt_valid": 7.017
+  },
+  {
+   "svi_q": 4.0,
+   "km2": 92.401,
+   "sites": 280.0,
+   "sites_per_km2": 3.03,
+   "median_rt_valid": 7.45
+  }
+ ],
+ "greedy_vs_exact": [
+  {
+   "hours": "osm",
+   "p": 10,
+   "ratio": 1.0
+  },
+  {
+   "hours": "osm",
+   "p": 25,
+   "ratio": 1.0
+  },
+  {
+   "hours": "osm",
+   "p": 50,
+   "ratio": 1.0
+  },
+  {
+   "hours": "osm",
+   "p": 100,
+   "ratio": 1.0
+  },
+  {
+   "hours": "osm",
+   "p": 200,
+   "ratio": 0.9998
+  },
+  {
+   "hours": "always",
+   "p": 10,
+   "ratio": 1.0
+  },
+  {
+   "hours": "always",
+   "p": 25,
+   "ratio": 1.0
+  },
+  {
+   "hours": "always",
+   "p": 50,
+   "ratio": 0.99987
+  },
+  {
+   "hours": "always",
+   "p": 100,
+   "ratio": 0.99905
+  },
+  {
+   "hours": "always",
+   "p": 200,
+   "ratio": 0.99957
+  }
+ ],
+ "coverage100_heldout": [
+  {
+   "p": 10,
+   "method": "classic MCLP 100 m",
+   "covered_24_7": 20,
+   "covered_open": 7
+  },
+  {
+   "p": 10,
+   "method": "expected survival (main)",
+   "covered_24_7": 7,
+   "covered_open": 6
+  },
+  {
+   "p": 25,
+   "method": "classic MCLP 100 m",
+   "covered_24_7": 34,
+   "covered_open": 16
+  },
+  {
+   "p": 25,
+   "method": "expected survival (main)",
+   "covered_24_7": 20,
+   "covered_open": 14
+  },
+  {
+   "p": 50,
+   "method": "classic MCLP 100 m",
+   "covered_24_7": 43,
+   "covered_open": 25
+  },
+  {
+   "p": 50,
+   "method": "expected survival (main)",
+   "covered_24_7": 40,
+   "covered_open": 26
+  },
+  {
+   "p": 100,
+   "method": "classic MCLP 100 m",
+   "covered_24_7": 47,
+   "covered_open": 28
+  },
+  {
+   "p": 100,
+   "method": "expected survival (main)",
+   "covered_24_7": 48,
+   "covered_open": 32
+  },
+  {
+   "p": 200,
+   "method": "classic MCLP 100 m",
+   "covered_24_7": 53,
+   "covered_open": 32
+  },
+  {
+   "p": 200,
+   "method": "expected survival (main)",
+   "covered_24_7": 53,
+   "covered_open": 37
+  }
+ ],
+ "reach_1.0": {
+  "rho0": 0.333,
+  "half_value_m": 88.0,
+  "share_at_300m": 0.0209,
+  "share_at_500m": 0.0007
+ },
+ "reach_1.4": {
+  "rho0": 0.333,
+  "half_value_m": 123.0,
+  "share_at_300m": 0.0915,
+  "share_at_500m": 0.0075
+ },
+ "reach_2.0": {
+  "rho0": 0.333,
+  "half_value_m": 176.0,
+  "share_at_300m": 0.2398,
+  "share_at_500m": 0.0502
+ },
+ "off_network_by_quartile": {
+  "1.0": 203,
+  "2.0": 180,
+  "4.0": 121,
+  "3.0": 106,
+  "NaN": 11
+ }
+}

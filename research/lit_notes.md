@@ -41,7 +41,20 @@ Larsen MP, Eisenberg MS, Cummins RO, Hallstrom AP. Predicting survival from out-
 Valenzuela TD, Roe DJ, Cretin S, Spaite DW, Larsen MP. Estimating effectiveness of cardiac arrest interventions: a logistic regression survival model. *Circulation.* 1997;96(10):3308–3313. doi:10.1161/01.CIR.96.10.3308
 - Witnessed VF arrests, n=205 (Tucson) + n=1,667 (King County); outcome = survival to discharge.
 - Collapse-to-CPR and collapse-to-defibrillation intervals both significant; a simplified model with only those two intervals performed as well as the full model; site was not a predictor after adjustment, so the model "can be generalized to other US populations".
-- Exact coefficients (often quoted as survival = 1/(1+e^−(0.260 − 0.106·tCPR − 0.139·tDefib))) **[unverified — not readable from abstract; check full text before citing]**. This is the natural survival-decay curve for our demand weights.
+- Simplified two-interval model: s = (1 + e^(−0.260 + 0.106·I_CPR + 0.139·I_Defib))^(−1), intervals in minutes from collapse. **[WEB — verified as Eq. (2) in the full text of Erkut, Ingolfsson & Erdoğan 2008 (preprint PDF read, see 1.6b); the Valenzuela full text itself is paywalled.]** Erkut et al. note that Valenzuela et al. reported that this function overestimated survival when response time was large. This is the survival-decay curve used for our gains.
+
+### 1.6b Erkut, Ingolfsson & Erdoğan 2008 — survival functions for EMS location [WEB — preprint PDF read]
+Erkut E, Ingolfsson A, Erdoğan G. Ambulance location for maximum survival. *Naval Research Logistics.* 2008;55(1):42–58. doi:10.1002/nav.20267. Preprint: https://sites.ualberta.ca/~aingolfs/documents/survival15november07.pdf
+- Reviews four published survival functions (Larsen 1993, Valenzuela 1997, Waalewijn 2001, De Maio 2003) and argues for survival-maximizing instead of coverage-maximizing location models; Edmonton EMS case study.
+- Reproduces Valenzuela's simplified model as Eq. (2) and De Maio's response-time-only function as Eq. (4) (coefficients above and in 1.6c).
+- All four studies define survival as survival to hospital discharge; Larsen and Valenzuela are VF-only, De Maio includes all treated arrests regardless of rhythm.
+
+### 1.6c De Maio et al. 2003 — survival vs EMS defibrillation response interval [PM abstract + WEB via Erkut]
+De Maio VJ, Stiell IG, Wells GA, Spaite DW. Optimal defibrillation response intervals for maximum out-of-hospital cardiac arrest survival rates. *Ann Emerg Med.* 2003;42(2):242–250. doi:10.1067/mem.2003.266
+- OPALS (Ontario) cohort of adult cardiac-etiology OHCAs; logistic regression of survival on the defibrillation response interval (call to arrival of a defibrillator-equipped vehicle) and covariates; odds of survival fall by a factor 0.77 per minute (95% CI 0.74–0.83) [PM abstract].
+- Predicted survival at 90th-percentile response cutoffs: 12.0% (5 min), 9.5% (6), 7.5% (7), 5.9% (8), 4.6% (9) [PM abstract]; concludes the common 8-minute target is not supported as optimal.
+- Response-time-only function after averaging over the other covariates, as reproduced by Erkut et al. Eq. (4): s(I) = (1 + e^(−0.679 + 0.262·I))^(−1) **[WEB — from Erkut preprint]**.
+- **Caveat:** this form gives 66% at I = 0 and about 23% at 7.2 min, far above De Maio's own population survival rates quoted above. The reproduced form may refer to a specific covariate profile, or the averaging step may have changed the level. Our paper uses it only as a robustness check; the ranking of methods is unchanged under it. Check the De Maio full text before relying on its absolute levels.
 
 ### 1.7 Weisfeldt et al. 2010 — bystander AED before EMS [PM]
 Weisfeldt ML, Sitlani CM, Ornato JP, et al. Survival after application of automatic external defibrillators before arrival of the emergency medical system: evaluation in the Resuscitation Outcomes Consortium population of 21 million. *J Am Coll Cardiol.* 2010;55(16):1713–1720. doi:10.1016/j.jacc.2009.11.077

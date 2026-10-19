@@ -29,7 +29,7 @@ python3 -m venv .venv
 ./run_all.sh          # downloads data, runs every experiment, rebuilds figures, paper and prototype
 ```
 
-Building the paper needs a LaTeX installation (`pdflatex`). The full run takes about 30–60 minutes, most of it the walking-network download and the cross-validation.
+Building the paper needs a LaTeX installation (`pdflatex`). The full run takes about 1–2 hours, most of it the walking-network download, the cross-validation and the robustness checks.
 
 ## Layout
 
