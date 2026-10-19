@@ -90,3 +90,12 @@ Paper text changes for you to make, because you're editing paper.tex. Find each 
     - "smart cabinets" (RQ2) → "outdoor 24/7 cabinets". Nothing in the model is smart.
     - "indispensable multiplier" overclaims for about 1 survivor per year. Something like *"a valuable complement during the first minutes of public shockable arrests"* is safer.
 13. **"Fully reproducible from public records" (Prototype section)** is now true: `run_all.sh` runs exactly the scripts behind the paper. No change needed.
+14. **Prototype screenshot (the reviewer asked for one).** It's at `figures/fig9_prototype.png`. Paste this at the end of the Prototype section:
+    ```latex
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{fig9_prototype.png}
+    \caption{The AED Placement Explorer with 50 indoor AEDs. Numbers in the tool use all arrests (in-sample), so they are higher than the out-of-sample results in Section 5.}
+    \label{fig:proto}
+    \end{figure}
+    ```
