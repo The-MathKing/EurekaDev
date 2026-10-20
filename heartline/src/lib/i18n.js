@@ -80,6 +80,7 @@ export const STRINGS = {
     "map.suggestGain": "would cover {pct} more of this area's homes, around the clock",
     "map.noSuggest": "No suitable 24/7 host sites found in view.",
     "map.print": "Print an advocacy sheet",
+    "map.sheetLikely": "Includes places that likely have an AED (not confirmed). Confirmed AEDs only would show lower coverage.",
     "map.legendCovered": "Covered",
     "map.legendGap": "Gap",
     "map.legendAed": "Mapped AED",
@@ -87,7 +88,7 @@ export const STRINGS = {
     "map.legendSuggest": "Suggested cabinet",
     "map.sheetTitle": "AED coverage gap report",
     "map.sheetArea": "Area centered on {lat}, {lon}. Generated {date} with Heartline from OpenStreetMap data.",
-    "map.sheetAsk": "Request: install 24/7 outdoor AED cabinets at the sites below, and register all existing AEDs on a public map.",
+    "map.sheetAsk": "Request: install 24/7 outdoor AED cabinets at the sites listed above, and register all existing AEDs on a public map.",
 
     "rep.intro": "Most AEDs in the US aren't on any public map, so apps (and 911 callers) can't find them. If you see one, add it here. It goes to OpenStreetMap, the open map that many apps use.",
     "rep.pick": "1. Tap the map where the AED is, or",
@@ -216,6 +217,7 @@ export const STRINGS = {
     "map.suggestGain": "cubriría {pct} más de las casas de esta zona, a toda hora",
     "map.noSuggest": "No se encontraron lugares 24/7 adecuados en esta vista.",
     "map.print": "Imprimir hoja para pedir DEA",
+    "map.sheetLikely": "Incluye lugares que probablemente tienen un DEA (sin confirmar). Solo con DEA confirmados la cobertura sería menor.",
     "map.legendCovered": "Cubierto",
     "map.legendGap": "Sin cobertura",
     "map.legendAed": "DEA en el mapa",
@@ -223,7 +225,7 @@ export const STRINGS = {
     "map.legendSuggest": "Gabinete sugerido",
     "map.sheetTitle": "Informe de zonas sin DEA",
     "map.sheetArea": "Zona centrada en {lat}, {lon}. Generado el {date} con Heartline a partir de datos de OpenStreetMap.",
-    "map.sheetAsk": "Solicitud: instalar gabinetes de DEA exteriores 24/7 en los lugares de abajo y registrar todos los DEA existentes en un mapa público.",
+    "map.sheetAsk": "Solicitud: instalar gabinetes de DEA exteriores 24/7 en los lugares de arriba y registrar todos los DEA existentes en un mapa público.",
 
     "rep.intro": "La mayoría de los DEA en EE. UU. no aparecen en ningún mapa público, así que las apps (y quienes llaman al 911) no los encuentran. Si ves uno, agrégalo aquí. Se envía a OpenStreetMap, el mapa abierto que usan muchas apps.",
     "rep.pick": "1. Toca el mapa donde está el DEA, o",

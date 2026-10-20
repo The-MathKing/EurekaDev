@@ -479,6 +479,7 @@ $("printBtn").addEventListener("click", () => {
     <p><strong>${pct(cov.share)}</strong> ${t("map.covered", { min: thresholdS / 60, when: whenLabel(date) })}</p>
     <p>${t("map.worst", { when: fmt.format(worstDate), pct: pct(profile[profile.indexOf(Math.min(...profile))]) })}</p>
     <p>${$("countText").textContent}</p>
+    ${$("includeLikely").checked ? `<p><em>${t("map.sheetLikely")}</em></p>` : ""}
     <div style="color:#000">${profileSvg(profile, null)}</div>
     <h2>${t("map.suggest")}</h2>
     <ol>${picks.map((p) => `<li>${escapeHtml(itemName(p))} (${catLabel(p.category)}), ${p.lat.toFixed(5)}, ${p.lon.toFixed(5)} — ${t("map.suggestGain", { pct: pct(p.gain / total) })}</li>`).join("")}</ol>
